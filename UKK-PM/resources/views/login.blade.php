@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Loginnnnnnnn') }}</div>
                 @if (session()->has('success'))
                 <div class="alert alert-success">
                     <span>{{ session()->get('success') }}</span>

@@ -73,6 +73,10 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 
 });
 
+
+
+
+
 // Masyarakat
 Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
 	Route::get('/',[MasyarakatController::class,'dashboard'])->name('masyarakat.dashboard');
