@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 use Auth;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,7 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.partial.navbar',function($view){
+        Paginator::useBootstrap();
+
+        view()->composer('layouts.admin_partial.navbar',function($view){
             // $view->auth('')
             // $auth = Auth::guard('petugas')->user();
             // $admin = ;
@@ -32,11 +34,12 @@ class AppServiceProvider extends ServiceProvider
             $view->with('petugas', Auth::guard('petugas')->user()); 
 
         });
-        view()->composer('layouts.partial.sidebar',function($view){
+        view()->composer('layouts.admin_partial.sidebar',function($view){
             // $view->auth('')
             $view->with('petugas', Auth::guard('petugas')->user()); 
 
         });
+
         //
     }
 }

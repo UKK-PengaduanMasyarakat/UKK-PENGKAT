@@ -44,7 +44,7 @@
 <body>
 
 	<!-- Main navbar -->
-	@include('layouts.partial.navbar')
+	@include('layouts.admin_partial.navbar')
 	<!-- /main navbar -->
 
 
@@ -52,7 +52,7 @@
 	<div class="page-content">
 
 		<!-- Main sidebar -->
-		@include('layouts.partial.sidebar')
+		@include('layouts.admin_partial.sidebar')
 		<!-- /main sidebar -->
 
 
@@ -79,7 +79,7 @@
 		<!-- /main content -->
 		
 	</div>
-	@include('layouts.partial.footer')
+	@include('layouts.admin_partial.footer')
 	<!-- /page content -->
 
 </body>

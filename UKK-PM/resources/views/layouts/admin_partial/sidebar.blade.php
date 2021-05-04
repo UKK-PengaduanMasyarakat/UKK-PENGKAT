@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 @if ($petugas->level == 'admin')
-                <li class="nav-item nav-item-submenu  {{'petugas/dashboard' === request()->path() ? '' : 'nav-item-expanded nav-item-open'}} ">
+                <li class="nav-item nav-item-submenu  {{'petugas/dashboard' === request()->path()  ||  'petugas/admin/data' === request()->path()  ? '' : 'nav-item-expanded nav-item-open'}} ">
                     <a href="#" class="nav-link {{'petugas/masyarakat/data' === request()->path() ? 'active ' : ''}}"><i class="icon-copy"></i> <span> Masyarakat</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Widgets">
@@ -53,7 +53,43 @@
               
                 <!-- /main -->
 
+              
+              {{-- petugas --}}
+             
+              @if ($petugas->level == 'admin')
+              <li class="nav-item nav-item-submenu  {{'petugas/dashboard' === request()->path() || 'petugas/masyarakat/data' === request()->path() ?  '' : 'nav-item-expanded nav-item-open'}} ">
+                <a href="#" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active ' : ''}}"><i class="icon-copy"></i> <span> Petugas</span></a>
+
+                  <ul class="nav nav-group-sub" data-submenu-title="Widgets">
+                      <li class="nav-item"><a href="{{route('data.petugas')}}" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active' : ''}}">Data Petugas</a></li>
+                  </ul>
+              </li>
+              @endif
+            
+              {{-- petuags --}}
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
                 <!-- Forms -->
+
                 <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Forms</div> <i class="icon-menu" title="Forms"></i></li>
       
                 <li class="nav-item nav-item-submenu">

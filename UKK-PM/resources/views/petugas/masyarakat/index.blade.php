@@ -144,9 +144,13 @@
 
                             </tbody>
                         </table>
+                        {{-- {{ $masyarakat->links() }} --}}
                     </div>
                 </div>
-                {{ $masyarakat->links() }}
+                <div class="text-center">
+                    {{ $masyarakat->appends(['sort' => 'created_at'])->links() }}
+                </div>
+                
 
             </div>
         </div>
