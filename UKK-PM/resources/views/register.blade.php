@@ -62,7 +62,7 @@
                     </div>
                     
                     <div class="">
-                        <button type="submit" class="btn text-white mt-2">SUBMIT</button>
+                        <button type="submit" class="btn text-white mt-2">DAFTAR</button>
                         <!-- <a href="">Sudah punya akun? Login</a> -->
                     </div>
                     <div class="text-center mt-3"style="font-weight: 300; font-size: 14px;">Sudah punya akun? <a href="{{ route('login') }}"> Login</a>
