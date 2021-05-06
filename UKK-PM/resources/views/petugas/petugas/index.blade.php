@@ -99,15 +99,59 @@
                     <div class="table-responsive">
                         <div class="card-header header-elements-inline">
                             <h4 class="card-title">Data Petugas</h4>
+                            <a href="{{route('petugas.tambah')}}" class="btn btn-success">Tambah Data</a>
                             
                         </div>
-    
+                        <table class="table">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>NO</th>
+                                    <th>Nama Petugas</th>
+                                    <th>Username</th>
+                                    <th>Telp</th>
+                                    <th>Level</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($petugas as $ptgs)
+                                    @if (($loop->iteration % 3) === 1)
+                                        <tr class="bg-info text-center">
+                                            <td><b>{{ $loop->iteration }}</b></td>
+                                        @elseif (($loop->iteration % 2) === 0)
+                                        <tr class=" text-center" style="background-color: yellow;">
+                                            <td><b>{{ $loop->iteration }}</b></td>
+                                        @else
+                                        <tr class="bg-dark text-center">
+                                            <td><b>{{ $loop->iteration }}</b></td>
+                                        @endif
+                                            <td><b>{{ $ptgs->nama_petugas }}</b></td>
+                                            <td><b>{{ $ptgs->username }}</b></td>
+                                            <td><b>{{ $ptgs->telp }}</b></td>
+                                            <td><b>{{ $ptgs->level}}</b></td>
+                                           <td>
+                                            <form action="{{route('delete.petugas',$ptgs->id)}}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                
+                                                <a href="{{route('edit.petugas',[$ptgs->id])}}" class="btn btn-warning">Edit</a>
+            
+                                                <button type="submit" class="btn btn-danger " >Delete</button> 
+                                            </form>
+                                           </td>
+                                        </tr>
+                                        
+                                        
+                                    @endforeach
+
+                            </tbody>
+                        </table>
                      
                         {{-- {{ $masyarakat->links() }} --}}
                     </div>
                 </div>
                 <div class="text-center">
-
+                    
                 </div>
                 
 

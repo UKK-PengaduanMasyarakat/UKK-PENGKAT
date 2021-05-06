@@ -40,9 +40,9 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 		Route::get('/data',[PetugasController::class,'index'])->name('data.petugas');
 		Route::get('/tambah',[PetugasController::class,'create'])->name('petugas.tambah');
 		Route::post('/add',[PetugasController::class,'store'])->name('store.petugas');
-		Route::get('/edit/{id}',[PetugasController::class,'edit'])->name('edi.petugas');
+		Route::get('/edit/{id}',[PetugasController::class,'edit'])->name('edit.petugas');
 		Route::put('/edit/{id}',[PetugasController::class,'update'])->name('update.petugas');
-		Route::delete('/data',[PetugasController::class,'destroy'])->name('delete.petugas');
+		Route::delete('/data{id}',[PetugasController::class,'destroy'])->name('delete.petugas');
 	});
 
 	// Masyarakat CRUD
