@@ -52,7 +52,7 @@ class MasyarakatController extends Controller
 
     public function index()
     {   
-        $masyarakat = Masyarakat::paginate(10);
+        $masyarakat = Masyarakat::paginate(5);
         return view('petugas.masyarakat.index',compact('masyarakat'));
         
     }
