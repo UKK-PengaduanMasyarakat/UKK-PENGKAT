@@ -101,7 +101,7 @@ class PetugasController extends Controller
     public function destroy(Request $request, $id)
     {
         Petugas::find($id)->delete($request->all());
-        return redirect()->route('data.petugas')->with(['danger' => 'Data Petugas '.$request->nama_petugas.'Berhasil Di Hapus']);
+        return redirect()->route('data.petugas')->with(['success' => 'Data Petugas '.$request->nama_petugas.'Berhasil Di Hapus']);
     }
 
 }

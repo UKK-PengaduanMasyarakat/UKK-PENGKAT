@@ -40,7 +40,7 @@
                 </li>
                 @if ($petugas->level == 'admin')
                 <li class="nav-item nav-item-submenu  {{'petugas/dashboard' === request()->path()  ||  'petugas/admin/data' === request()->path()  ? '' : 'nav-item-expanded nav-item-open'}} ">
-                    <a href="#" class="nav-link {{'petugas/masyarakat/data' === request()->path() ? 'active ' : ''}}"><i class="icon-copy"></i> <span> Masyarakat</span></a>
+                    <a href="#" class="nav-link {{'petugas/masyarakat/data' === request()->path() ? 'active ' : ''}}"><i class="icon-users4"></i> <span> Masyarakat</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Widgets">
                         <li class="nav-item"><a href="{{route('data.masyarakat')}}" class="nav-link {{'petugas/masyarakat/data' === request()->path() ? 'active' : ''}}">Data Masyarakat</a></li>
@@ -58,7 +58,7 @@
              
               @if ($petugas->level == 'admin')
               <li class="nav-item nav-item-submenu  {{'petugas/dashboard' === request()->path() || 'petugas/masyarakat/data' === request()->path() ?  '' : 'nav-item-expanded nav-item-open'}} ">
-                <a href="#" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active ' : ''}}"><i class="icon-copy"></i> <span> Petugas</span></a>
+                <a href="#" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active ' : ''}}"><i class="icon-user-tie"></i> <span> Petugas</span></a>
 
                   <ul class="nav nav-group-sub" data-submenu-title="Widgets">
                       <li class="nav-item"><a href="{{route('data.petugas')}}" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active' : ''}}">Data Petugas</a></li>

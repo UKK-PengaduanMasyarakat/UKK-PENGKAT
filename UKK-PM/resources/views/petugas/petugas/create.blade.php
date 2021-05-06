@@ -45,8 +45,8 @@
     <br>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9">
-    
+            <div class="col-md-10">
+
                 <div class="card">
 
 
@@ -55,108 +55,97 @@
                     <div class="table-responsive">
                         <div class="card-header header-elements-inline">
                             <h4 class="card-title">Tambah Petugas</h4>
-                            
+
                         </div>
                         <div class="card">
                             <div class="card-header header-elements-inline">
                                 <div class="header-elements">
-                                  
+
                                 </div>
                             </div>
-        
+
                             <div class="card-body">
-                                <form action="{{route('store.petugas')}}" method="POST">
+                                <form action="{{ route('store.petugas') }}" method="POST">
                                     @csrf
                                     <fieldset class="md-1">
-                                        
-                                     
+
+
                                         <div class="form-group row">
                                             <div class="col-md-12">
                                                 <label>Nama</label>
-                                                <input type="text" class="form-control @error('nama_petugas') is-invalid @enderror " name="nama_petugas">
+                                                <input type="text"
+                                                    class="form-control @error('nama_petugas') is-invalid @enderror "
+                                                    name="nama_petugas">
                                                 @error('nama_petugas')
                                                     <span>
-                                                        <small>{{$message}}</small>
+                                                        <small class="text-danger">{{ $message }}</small>
                                                     </span>
                                                 @enderror
                                             </div>
+                                        </div>
 
-                                            <div class="form-group row mt-3">
-                                                <div class="col-md-6">
+                                        <div class=" row">
+
+                                                <div class="col-md-4">
                                                     <label>Username</label>
-                                                    <input type="text" class="form-control @error('username') is-invalid @enderror " name="username" placeholder="Username">
-                                                        @error('username')
-                                                            <span>
-                                                                <small>{{$message}}</small>
-                                                            </span>
-                                                        @enderror
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Password</label>
-                                                    <input type="password" class="form-control @error('password') is-invalid @enderror " name="password" placeholder="Password">
-                                                    @error('password')
+                                                    <input type="text"
+                                                        class="form-control @error('username') is-invalid @enderror "
+                                                        name="username" placeholder="Username">
+                                                    @error('username')
                                                         <span>
-                                                            <small>{{$message}}</small>
+                                                            <small class="text-danger">{{ $message }}</small>
                                                         </span>
                                                     @enderror
                                                 </div>
-                                              </div>
-    
-{{-- 
-                                        <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label class="col-form-label col-lg-3">Username</label>
-                                                <input type="text" class="form-control @error('username') is-invalid @enderror " name="username" placeholder="Username">
-                                                @error('username')
+                                                <div class="col-md-4">
+                                                    <label>Password</label>
+                                                    <input type="password"
+                                                        class="form-control @error('password') is-invalid @enderror "
+                                                        name="password" placeholder="Password">
+                                                    @error('password')
+                                                        <span>
+                                                            <small class="text-danger">{{ $message }}</small>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                
+                                                {{--  --}}
+                                                <div class="col-md-4">
+                                                    <label>Telepon</label>
+                                                    <input type="text"
+                                                    class="form-control @error('telp') is-invalid @enderror "
+                                                    name="telp" placeholder="08-XXXXXX">
+                                                    @error('telp')
                                                     <span>
-                                                        <small>{{$message}}</small>
+                                                        <small class="text-danger">{{ $message }}</small>
                                                     </span>
-                                                @enderror
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label class="col-form-label col-lg-3">Password</label>
-                                                <input type="password" class="form-control @error('password') is-invalid @enderror " name="password" placeholder="Password">
-                                                @error('password')
-                                                    <span>
-                                                        <small>{{$message}}</small>
-                                                    </span>
-                                                @enderror
-                                            </div>
+                                                    @enderror
+                                                </div>
+                                                
                                         </div>
-         --}}
-                                        <div class="form-group row mt-3 ml-2">
-                                            <label>Telepon</label>
-                                            <div class="col-lg-12">
-                                                <input type="text" class="form-control @error('telp') is-invalid @enderror " name="telp" placeholder="08-XXXXXX">
-                                                @error('telp')
-                                                    <span>
-                                                        <small>{{$message}}</small>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
                                         <div class="form-group col-md-4">
                                             <label for="inputCity">Level</label>
-                                            <select id="level" class="form-control @error('level') is-invalid @enderror" name="level">
+                                            <select id="level" class="form-control @error('level') is-invalid @enderror"
+                                                name="level">
                                                 <option value="" selected>--Pilih Level--</option>
                                                 <option value="admin">Admin</option>
                                                 <option value="petugas">Petugas</option>
                                             </select>
                                             @error('level')
-                                            <small class="text-danger">{{$message}}</small>
-                                        @enderror
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
                                         </div>
-        
                                     </fieldset>
+
                                     <div class="text-right">
-                                        <a href="{{route('data.petugas')}}" class="btn btn-dark">back</a>
-                                        <button type="submit" class="btn btn-primary">Tambah <i class="icon-paperplane ml-2"></i></button>
+                                        <a href="{{ route('data.petugas') }}" class="btn btn-dark">back</a>
+                                        <button type="submit" class="btn btn-primary">Tambah <i
+                                                class="icon-paperplane ml-2"></i></button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                     
+
                     </div>
                 </div>
             </div>

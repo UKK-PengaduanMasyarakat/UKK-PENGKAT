@@ -18,25 +18,8 @@
 
             <div class="header-elements d-none">
                 <div class="breadcrumb justify-content-center">
-                    <a href="#" class="breadcrumb-elements-item">
-                        <i class="icon-comment-discussion mr-2"></i>
-                        Support
-                    </a>
-
-                    <div class="breadcrumb-elements-item dropdown p-0">
-                        <a href="#" class="breadcrumb-elements-item dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-gear mr-2"></i>
-                            Settings
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#" class="dropdown-item"><i class="icon-user-lock"></i> Account security</a>
-                            <a href="#" class="dropdown-item"><i class="icon-statistics"></i> Analytics</a>
-                            <a href="#" class="dropdown-item"><i class="icon-accessibility"></i> Accessibility</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item"><i class="icon-gear"></i> All settings</a>
-                        </div>
-                    </div>
+                
+                   
                 </div>
             </div>
         </div>
@@ -45,46 +28,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                {{-- <div class="card">
-
-                <table class="table datatable-basic">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Job Title</th>
-                            <th>DOB</th>
-                            <th>Status</th>
-                            <th class="text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td>Cicely</td>
-                            <td>Sigler</td>
-                            <td><a href="#">Senior Research Officer</a></td>
-                            <td>15 Mar 1960</td>
-                            <td><span class="badge badge-info">Pending</span></td>
-                            <td class="text-center">
-                                <div class="list-icons">
-                                    <div class="dropdown">
-                                        <a href="#" class="list-icons-item" data-toggle="dropdown">
-                                            <i class="icon-menu9"></i>
-                                        </a>
-
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="#" class="dropdown-item"><i class="icon-file-pdf"></i> Export to .pdf</a>
-                                            <a href="#" class="dropdown-item"><i class="icon-file-excel"></i> Export to .csv</a>
-                                            <a href="#" class="dropdown-item"><i class="icon-file-word"></i> Export to .doc</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> --}}
+                
                 <div class="card">
                     @if ($message = Session::get('success'))
                     <div class="alert bg-success text-white alert-dismissible">
@@ -97,34 +41,40 @@
 
 
                     <div class="table-responsive">
-                        <div class="card-header header-elements-inline">
-                            <h4 class="card-title">Data Petugas</h4>
-                            <a href="{{route('petugas.tambah')}}" class="btn btn-success">Tambah Data</a>
+                        
+                        <div class="card ">
+                            <div class="card-header header-elements-inline">
+                                <h2 class="card-title">Data Petugas</h2>
+                                <div class="header-elements">
+                                    <a href="{{route('petugas.tambah')}}" class="btn bg-indigo-600 rounded">Tambah Data</a>
                             
-                        </div>
-                        <table class="table">
-                            <thead>
-                                <tr class="text-center">
-                                    <th>NO</th>
-                                    <th>Nama Petugas</th>
-                                    <th>Username</th>
-                                    <th>Telp</th>
-                                    <th>Level</th>
-                                    <th>action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($petugas as $ptgs)
-                                    @if (($loop->iteration % 3) === 1)
-                                        <tr class="bg-info text-center">
-                                            <td><b>{{ $loop->iteration }}</b></td>
-                                        @elseif (($loop->iteration % 2) === 0)
-                                        <tr class=" text-center" style="background-color: yellow;">
-                                            <td><b>{{ $loop->iteration }}</b></td>
-                                        @else
-                                        <tr class="bg-dark text-center">
-                                            <td><b>{{ $loop->iteration }}</b></td>
-                                        @endif
+                                </div>
+                            </div>
+        
+        
+                            <div class="table-responsive">
+                                <table class="table  ">
+                                    <thead>
+                                        <tr class="text-center bg-dark">
+                                            <th>NO</th>
+                                            <th>Nama Petugas</th>
+                                            <th>Username</th>
+                                            <th>Telp</th>
+                                            <th>Level</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($petugas as $ptgs)
+
+                                        <tr class=" text-center">
+                                            @if (($loop->iteration % 3) === 2)
+                                            <tr class="bg-teal-300 text-center">
+                                                <td><b>{{ $loop->iteration }}</b></td>
+                                                @else 
+                                                <tr class=" text-center">
+                                                    <td><b>{{ $loop->iteration }}</b></td>
+                                                @endif
                                             <td><b>{{ $ptgs->nama_petugas }}</b></td>
                                             <td><b>{{ $ptgs->username }}</b></td>
                                             <td><b>{{ $ptgs->telp }}</b></td>
@@ -140,14 +90,13 @@
                                             </form>
                                            </td>
                                         </tr>
-                                        
-                                        
-                                    @endforeach
-
-                            </tbody>
-                        </table>
-                     
-                        {{-- {{ $masyarakat->links() }} --}}
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                       
+                        {{ $petugas->links() }}
                     </div>
                 </div>
                 <div class="text-center">

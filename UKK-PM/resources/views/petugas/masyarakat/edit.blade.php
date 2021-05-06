@@ -76,7 +76,7 @@
                                                 <input type="text" class="form-control @error('nama') is-invalid @enderror " name="nama" value="{{$masyarakat->nama}}">
                                                 @error('nama')
                                                     <span>
-                                                        <small>{{$message}}</small>
+                                                        <small class="text-danger">{{$message}}</small>
                                                     </span>
                                                 @enderror
                                             </div>
@@ -85,7 +85,7 @@
                                                 <input type="text" class="form-control @error('nik') is-invalid @enderror " name="nik" value="{{$masyarakat->nik}}">
                                                 @error('nik')
                                                     <span>
-                                                        <small>{{$message}}</small>
+                                                        <small class="text-danger">{{$message}}</small>
                                                     </span>
                                                 @enderror
                                             </div>
@@ -96,7 +96,7 @@
                                                 <input type="text" class="form-control @error('username') is-invalid @enderror " name="username" value="{{$masyarakat->username}}">
                                                 @error('username')
                                                     <span>
-                                                        <small>{{$message}}</small>
+                                                        <small class="text-danger">{{$message}}</small>
                                                     </span>
                                                 @enderror
                                             </div>
@@ -105,7 +105,7 @@
                                                 <input type="password" class="form-control @error('password') is-invalid @enderror " name="password"    placeholder="new Password">
                                                 @error('password')
                                                     <span>
-                                                        <small>{{$message}}</small>
+                                                        <small class="text-danger">{{$message}}</small>
                                                     </span>
                                                 @enderror
                                             </div>
@@ -117,7 +117,7 @@
                                                 <input type="text" class="form-control @error('telp') is-invalid @enderror " name="telp" value="{{$masyarakat->telp}}">
                                                 @error('telp')
                                                     <span>
-                                                        <small>{{$message}}</small>
+                                                        <small class="text-danger">{{$message}}</small>
                                                     </span>
                                                 @enderror
                                             </div>
