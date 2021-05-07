@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
+                   <span class="text-danger">
                     {{$user->nama}} 
+                   </span>
                 </div>
             </div>
         </div>

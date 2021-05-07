@@ -4,19 +4,19 @@
 <section id="login">
         <div class="container">
             <div class="card m-auto headcard text-center shadow">
-                <h1 class="fw-bold text-white fs-5">LOGIN</h1>
+                <h1 class="fw-bold  fs-5" style="color: yellow">LOGIN</h1>
             </div>
             <div class="card formcard shadow m-auto ">
                 <div class="mt-4">
                     <div style="height: 20px; padding-top:18px;" >
                         @if (session()->has('success'))
                         <div class="alert alert-success">
-                            <span>{{ session()->get('success') }}</span>
+                            <span style="color: black;">{{ session()->get('success') }}</span>
                         </div>
                         @endif
                         @if (session()->has('error'))
                         <div class="alert alert-danger">
-                            <span>{{ session()->get('error') }}</span>
+                            <span style="color: black;">{{ session()->get('error') }}</span>
                         </div>
                         @endif
 
@@ -54,7 +54,7 @@
                                 </a>
                             @endif
                         </div>
-                        <div class="text-center mt-3"style="font-weight: 300; font-size: 14px;">Belum punya akun? <a href="{{ route('form.register') }}"> Daftar</a>
+                        <div class="text-center mt-3"style="font-weight: 300; font-size: 14px; color:black;">Belum punya akun? <a href="{{ route('form.register') }}"> Daftar</a>
                         </div>
                     </form>
                 </div>

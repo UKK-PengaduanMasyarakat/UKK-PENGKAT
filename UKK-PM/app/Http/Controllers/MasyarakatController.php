@@ -26,7 +26,11 @@ class MasyarakatController extends Controller
             'password' => 'required|required_with:confirm_password|same:confirm_password',
             'confirm_password' => 'min:5',
             'telp' => 'required',
-             ]);
+        ],[
+            'required' =>  'Tidak boleh kosong!',
+            'same' =>  'Confirm password harus sama!',
+            'min' =>  'Min 10 character',
+        ]);
 
              Masyarakat::create([
                 'nik' => $request->nik,

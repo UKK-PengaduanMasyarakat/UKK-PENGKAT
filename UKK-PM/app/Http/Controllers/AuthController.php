@@ -44,6 +44,6 @@ class AuthController extends Controller
     	} else if(Auth::guard('petugas')->check()) {
     		Auth::guard('petugas')->logout();
     	}
-    	return redirect()->route('login');    	
+    	return redirect()->route('index');    	
     }
 }

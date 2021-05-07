@@ -16,9 +16,9 @@ use App\Http\Controllers\PengaduanController;
 |
 */
 
-Route::get('/testt', function() {
-	return view('layouts.admin');
-});
+Route::get('/www.ngadu!.com', function() {
+	return view('index');
+})->name('index');
 
 Route::get('/login', function() {
 	return view('login');
