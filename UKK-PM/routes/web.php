@@ -16,6 +16,8 @@ use App\Http\Controllers\PengaduanController;
 |
 */
 
+
+
 Route::get('/www.ngadu!.com', function() {
 	return view('index');
 })->name('index');
@@ -81,7 +83,8 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
 	Route::get('/',[MasyarakatController::class,'dashboard'])->name('masyarakat.dashboard');
 	Route::get('/detail/{id}','masyarakatController@detail')->name('detail.pengaduan2');
-	Route::get('/tulis','pengaduanController@tulis')->name('buat.pengaduan');
+	Route::get('/tulis',[PengaduanController::class,'tulis'])->name('buat.pengaduan');
+	// Route::get('/tulis','pengaduanController@tulis')->name('buat.pengaduan');
 	Route::post('/kirimpengaduan','pengaduanController@postPengaduan')->name('post.pengaduan');
 	
 });

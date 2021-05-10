@@ -12,7 +12,7 @@
                     @csrf
                     <!-- nik -->
                     <div class="input-group pb-3 m-auto" style="width: 350px; ">
-                        <span class="input-group-text  fs-6"><i class="fas fa-id-card"></i></span>
+                        <span class="input-group-text  fs-6 "><i style="color: black;" class="fas fa-id-card"></i></span>
                         <input id="nik" type="text" class="form-control" placeholder="NIK" style="font-size: 14px;"name="nik" value="{{ old('nik') }}" >
                         @if ($errors->has('nik'))
                         <span class="invalid-feedback d-block text-md-left" role="alert">
@@ -22,7 +22,7 @@
                     </div>
                     <!-- nama -->
                     <div class="input-group pb-3 m-auto" style="width: 350px; ">
-                        <span class="input-group-text  fs-6"><i class="fas fa-user"></i></span>
+                        <span class="input-group-text  fs-6 "><i style="color: black;" class="fas fa-user"></i></span>
                         <input id="nama" type="text" class="form-control" placeholder="Nama" style="font-size: 14px;" name="nama" value="{{ old('nama') }}">
                         @if ($errors->has('nama'))
                         <span class="invalid-feedback d-block text-md-left" role="alert">
@@ -32,7 +32,7 @@
                     </div>
                     <!-- phone -->
                     <div class="input-group pb-3 m-auto" style="width: 350px; ">
-                        <span class="input-group-text  fs-6"><i class="fas fa-phone"></i></span>
+                        <span class="input-group-text  fs-6 "><i style="color: black;" class="fas fa-phone"></i></span>
                         <input id="telp" type="text" class="form-control " placeholder="Telephone" style="font-size: 14px;" name="telp"value="{{ old('telp') }}" >
                         @if ($errors->has('telp'))
                         <span class="invalid-feedback d-block text-md-left" role="alert">
@@ -42,7 +42,7 @@
                     </div>
                     <!-- username -->
                     <div class="input-group pb-3 m-auto" style="width: 350px; ">
-                        <span class="input-group-text  fs-6"><i class="far fa-user"></i></span>
+                        <span class="input-group-text  fs-6 "><i style="color: black;" class="fas fa-user"></i></span>
                         <input id="username" type="text" class="form-control" placeholder="Username"style="font-size: 14px;" name="username" value="{{ old('username') }}">
                         @if ($errors->has('username'))
                         <span class="invalid-feedback d-block text-md-left" role="alert">
@@ -52,7 +52,7 @@
                     </div>
                     <!-- password -->
                     <div class="input-group pb-3 m-auto" style="width: 350px; ">
-                        <span class="input-group-text  fs-6"><i class="fas  fa-lock"></i></span>
+                        <span class="input-group-text  fs-6 "><i style="color: black;" class="fas  fa-lock"></i></span>
                         <input id="password" type="password" class="form-control" placeholder="Password"style="font-size: 14px;" name="password">
                         @if ($errors->has('password'))
                         <span class="invalid-feedback d-block text-md-left" role="alert">
@@ -62,7 +62,7 @@
                     </div>
                     <!-- konfirmasi password -->
                     <div class="input-group pb-3 m-auto" style="width: 350px; ">
-                        <span class="input-group-text  fs-6"><i class="fas fa-unlock-alt"></i></span>
+                        <span class="input-group-text  fs-6 "><i style="color: black;" class="fas fa-unlock-alt"></i></span>
                         <input id="password-confirm" type="password" class="form-control " placeholder="Konfirmasi password"style="font-size: 14px;" name="confirm_password" >
                     </div>
                     

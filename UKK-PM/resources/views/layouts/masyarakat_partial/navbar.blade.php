@@ -10,12 +10,12 @@
                 </li>
 
                 @guest
-                    
+
                 @else
-                <li class="nav-item me-4">
-                    <a class="nav-link" href="#">History Pengaduan</a>
-                </li>
-                @endguest
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="#">History Pengaduan</a>
+                    </li>
+                @endguest   
                 <li class="nav-item me-4">
                     <a class="nav-link" href="#">About me</a>
                 </li>
@@ -26,21 +26,24 @@
             <!-- <a href="#" class="btn btn-transparant me-3 text-white">Log in</a> -->
             @guest
                 @if ('www.ngadu!.com' === request()->path())
-                <a href="{{ route('login') }}" class="btn btn-light">Log in </a>
+                     <a href="{{ route('login') }}" class="btn btn-light">Log in </a>
+                        
                 @else
 
                 @endif
             @else
-                <a class="text-white">{{ $user->nama }} | &nbsp;</a>
-                <a class="text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+                    <a class="text-white">{{ $user->nama }} | &nbsp;</a>
+                    <a class="text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
             @endguest
+            
         </div>
     </div>
 </nav>
