@@ -84,7 +84,7 @@ Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
 	Route::get('/',[MasyarakatController::class,'dashboard'])->name('masyarakat.dashboard');
 	Route::get('/detail/{id}','masyarakatController@detail')->name('detail.pengaduan2');
 	Route::get('/tulis',[PengaduanController::class,'tulis'])->name('buat.pengaduan');
+	Route::post('/kirimpengaduan',[PengaduanController::class,'postPengaduan'])->name('post.pengaduan');
 	// Route::get('/tulis','pengaduanController@tulis')->name('buat.pengaduan');
-	Route::post('/kirimpengaduan','pengaduanController@postPengaduan')->name('post.pengaduan');
 	
 });

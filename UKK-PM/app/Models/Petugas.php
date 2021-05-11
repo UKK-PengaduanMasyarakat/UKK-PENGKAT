@@ -19,4 +19,13 @@ class Petugas extends Model
     protected $guarded = [];
 
     protected $hidden = ['password'];
+
+
+
+   
+    public function tanggapan()
+    {
+        return $this->hasMany('App\Models\Tanggapan');
+    }
+
 }

@@ -44,7 +44,11 @@ class MasyarakatController extends Controller
 
     }
 
-   
+    public function dashboard()
+    {
+        $user = Auth::guard('masyarakat')->user();
+        return view('masyarakat.dashboard',compact('user'));
+    }
 
 
 

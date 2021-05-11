@@ -16,4 +16,9 @@ class Masyarakat extends Authenticable
     protected $guard = 'Masyarakat';
     protected $guarded = [];
 
+
+
+
+    
+
 }
