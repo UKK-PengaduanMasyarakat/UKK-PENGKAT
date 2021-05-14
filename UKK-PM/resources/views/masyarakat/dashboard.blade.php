@@ -1,6 +1,81 @@
 @extends('layouts.auth')
 
 @section('content')
+
+    <div class="container">
+        <div class="container ms-5">
+                    <br>
+                    <br>
+            <div class="row">
+                <div class="col-11">
+                    <div id="myDIV" style="background-color: white; border-radius: 20px;">
+                        <div class="container">
+                            <div class="container content">
+                                <div class="row">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                    
+                    
+                    
+                                        @forelse ($pengaduan as $pengadu)
+                                            <div class="accordion-item " style="border-radius: 15px;">
+                                                <h2 class="accordion-header" id="flush-heading{{ $loop->iteration }}">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#flush-collapse{{ $loop->iteration }}" aria-expanded="false"
+                                                        aria-controls="flush-collapseOne">
+                                                        <div class="col-5 text-dark">
+                                                            {{ $pengadu->judul_laporan }}
+                    
+                                                        </div>
+                                                        <div class="col-5 ">
+                                                            <span class="badge bg-info">{{ $pengadu->status == '0' ? 'proses' : '' }}</span>
+                    
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div id="flush-collapse{{ $loop->iteration }}" class="accordion-collapse collapse"
+                                                    aria-labelledby="flush-heading{{ $loop->iteration }}"
+                                                    data-bs-parent="#accordionFlushExample">
+                                                    <div class="card mb-3" style="max-width: 100%; border: none;">
+                                                        <div class="row g-0">
+                                                            <div class="col-md-4">
+                                                                <img src="{{ asset('pengaduan/' . $pengadu->foto) }}"
+                                                                    style="width: 200px; height: 120px;" alt="...">
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <p class="card-text" style=" width: 600px;
+                                                              height: 110px;
+                                                              overflow: auto;
+                                                              color: black;">
+                                                                        {{ $pengadu->isi_laporan }}
+                                                                    </p>
+                                                                    <p class="card-text"><small
+                                                                            class="text-muted">{{ $pengadu->created_at->diffForHumans() }}</small>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @empty
+                    
+                    
+                                        @endforelse
+                                    </div>
+                    
+                                </div>
+                                {{ $pengaduan->links() }}
+                            </div>
+                        </div>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br><br>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -11,9 +86,6 @@
                     <span style="color: black; " class="d-flx justify-content-end" >Pengaduan anda  </span>
 
                 </div> --}}
-
-
-
 
 
 
@@ -61,6 +133,19 @@
                                 </div>
                             </div>
                             <br>
+                            <br>
+
+                            <div class="form-group-row">
+                                <label class="col-form-label  col-lg-12 text-dark">Judul Laporan</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control @error('judul_laporan') is-invalid @enderror"
+                                        name="judul_laporan">
+
+                                    @error('judul_laporan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="form-group-row">
                                 <label class="col-form-label  col-lg-12 text-dark">Isi Laporan</label>
                                 <div class="col-lg-12">
@@ -71,8 +156,8 @@
                                     @error('isi_laporan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                    <input type="hidden" name="nik" value="{{ Auth::guard('masyarakat')->user()->nik }}"
-                                        id="">
+
+                                    <input type="hidden" name="nik" value="{{ $user->nik }}" id="">
                                 </div>
                             </div>
                             <br>
@@ -98,28 +183,5 @@
     <br>
     <br>
 
-    <div class="container">
-        <div class="container content">
-            <div class="row">
-                <div class="card badge rounded-10 bg-secondary">
-                    <div class="card-body d-flex justify-content-evenly d-flex align-items-center">
-                        <div class="col-2">
-                            <img src="" alt="" style="width: 200px;">
-                        </div>
-                        <div class="col-6" style="text-align: left;">
-                            <h3>Fast Business Management in 30 minutes</h3>
-                            <p>Our tools for business analysis helps an organization <br> understand market or business
-                                development.
-                            </p>
-                        </div>
-                        <div class="col-2">
-                            <a href="#" class="btn btn-dark btn-lg mb-3" style="width: 200px;">Buy Now</a> <br>
-                            <a href="#" class="btn btn-outline-dark btn-lg" style="width: 200px;">Demo Version</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
+  
 @endsection

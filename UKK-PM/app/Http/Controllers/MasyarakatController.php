@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Masyarakat;
+use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 class MasyarakatController extends Controller
@@ -46,8 +47,7 @@ class MasyarakatController extends Controller
 
     public function dashboard()
     {
-        $user = Auth::guard('masyarakat')->user();
-        return view('masyarakat.dashboard',compact('user'));
+        
     }
 
 

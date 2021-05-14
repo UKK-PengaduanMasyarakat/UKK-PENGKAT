@@ -13,10 +13,15 @@ class PengaduanController extends Controller
     public function tulis()
     {
         $user = Auth::guard('masyarakat')->user();
-        return view('masyarakat.dashboard',compact('user'));
+        $pengaduan = Pengaduan::where('nik','=',$user->nik)->where('status','=','0')->orderBy('created_at','DESC')->paginate(5);
+        // dd($pengaduan);
+        return view('masyarakat.dashboard',compact('user','pengaduan'));
     }
 
-
+public function index()
+{
+    return view('petugas.pengaduan.index');
+}
 
     public function postPengaduan(Request $request)
     {
@@ -30,6 +35,7 @@ class PengaduanController extends Controller
         $request->validate([
             'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'isi_laporan' => 'required|max:300',
+            'judul_laporan' => 'required|min:10',
         ],[
             'required' => 'Input Tidak boleh kosong!',
             'mimes' => 'Harus jpg,png,jpeg,giv,svg',
@@ -44,12 +50,14 @@ class PengaduanController extends Controller
                     'tgl_pengaduan' => Carbon::now(),
                     'nik' => $request->nik,
                     'isi_laporan' => $request->isi_laporan,
+                    'judul_laporan' => $request->judul_laporan,
                     'foto' => $namafile,
                     'status' => '0',
+                    'created_at' => Carbon::now(),
                  ]);
-                 
-
                  return redirect()->back()->with('pesan','Berhasil Mengirim Pengaduan!');
 
     }
+
+
 }

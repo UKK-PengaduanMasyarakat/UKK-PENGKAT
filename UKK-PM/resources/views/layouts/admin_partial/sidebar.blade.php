@@ -49,6 +49,15 @@
                         <li class="nav-item"><a href="index.html" class="nav-link {{'role-register' === request()->path() ? 'active' : ''}}"></a></li>
                     </ul>
                 </li>
+                @elseif( $petugas->level == 'petugas' )
+                <li class="nav-item">
+                    <a href="{{route('data.pengaduan')}}" class="nav-link {{'petugas/pengaduan' === request()->path() ? 'active' : ''}}">
+                        <i class="icon-home4"></i>
+                        <span>
+                            Pengaduan Verifikasi
+                        </span>
+                    </a>
+                </li>
                 @endif
               
                 <!-- /main -->
