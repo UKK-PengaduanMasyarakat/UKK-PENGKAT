@@ -21,7 +21,7 @@ class MasyarakatController extends Controller
     public function registerPost(Request $request)
     {
         $request->validate([
-            'nik' => 'required|min:10',
+            'nik' => 'required|min:10,max:15',
             'nama' => 'required',
             'username' => 'required',
             'password' => 'required|required_with:confirm_password|same:confirm_password',
@@ -30,7 +30,8 @@ class MasyarakatController extends Controller
         ],[
             'required' =>  'Tidak boleh kosong!',
             'same' =>  'Confirm password harus sama!',
-            'min' =>  'Min 10 character',
+            'min:10' =>  'Min 10 character',
+            'max' =>  'Max 15 character',
         ]);
 
              Masyarakat::create([

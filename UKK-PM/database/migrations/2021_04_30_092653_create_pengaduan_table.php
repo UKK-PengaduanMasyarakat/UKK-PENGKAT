@@ -16,9 +16,10 @@ class CreatePengaduanTable extends Migration
         Schema::create('pengaduan', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_pengaduan');
-            $table->char('nik',16);
             $table->text('judul_laporan');
             $table->text('isi_laporan');
+            $table->unsignedBigInteger('id_masyarakat');
+            $table->foreign('id_masyarakat')->references('id')->on('masyarakat');
             $table->string('foto');
             $table->enum('status',['0','proses','selesai']);
             $table->timestamps();

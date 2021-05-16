@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\TanggapanController
+;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,9 +64,9 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 	Route::group(['prefix' => 'pengaduan', 'middleware'=>['auth']], function() {
 		Route::get('/',[PengaduanController::class,'index'])->name('data.pengaduan');
 		Route::get('/entri',[PengaduanController::class,'entri'])->name('verifikasi');
-		Route::get('/show/{id}','pengaduanController@detail')->name('show.pengaduan');
-		Route::get('/tanggapan/{id}','pengaduanController@getEntri')->name('getEntri');
-		Route::post('kirimtanggapan','pengaduanController@tanggapanPost')->name('kirim.tanggapan');
+		Route::get('/show/{id}',[PengaduanController::class,'detail'])->name('show.pengaduan');
+		Route::get('/tanggapan/{id}',[PengaduanController::class,'getEntri'])->name('getEntri');
+		Route::post('kirimtanggapan',[TanggapanController::class,'tanggapanPost'])->name('kirim.tanggapan');
 		Route::get('/tolak/{id}','pengaduanController@tolakEntri')->name('tolak.entri');
 		Route::get('/clear/{id}','pengaduanController@clearTanggapan')->name('clear.tanggapan');
 

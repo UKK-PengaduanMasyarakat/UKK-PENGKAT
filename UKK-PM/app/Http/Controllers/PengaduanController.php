@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengaduan;
+use App\Models\Tanggapan;
 use Carbon\Carbon;
 use Auth;
 class PengaduanController extends Controller
@@ -13,14 +14,36 @@ class PengaduanController extends Controller
     public function tulis()
     {
         $user = Auth::guard('masyarakat')->user();
-        $pengaduan = Pengaduan::where('nik','=',$user->nik)->where('status','=','0')->orderBy('created_at','DESC')->paginate(5);
+        $pengaduan = Pengaduan::where('id_masyarakat','=',$user->id)->where('status','=','proses')->orderBy('created_at','DESC')->paginate(5);
+        $tanggapan = Pengaduan::where('id_masyarakat','=',$user->id)->where('status','=','selesai')->orderBy('created_at','DESC')->paginate(5);
         // dd($pengaduan);
-        return view('masyarakat.dashboard',compact('user','pengaduan'));
+        return view('masyarakat.dashboard',compact('user','pengaduan','tanggapan'));
     }
 
 public function index()
 {
-    return view('petugas.pengaduan.index');
+    $pengaduanProses = Pengaduan::where('status','=','proses')->orderBy('created_at','DESC')->get();
+    return view('petugas.pengaduan.index',compact('pengaduanProses'));
+}
+
+
+public function detail($id)
+{
+
+    $showPengaduan = Pengaduan::find($id);
+    return view('petugas.pengaduan.show',compact('showPengaduan'));
+}
+
+
+
+
+public function getEntri($id)
+{
+//  dd($id);
+ $showPengaduan = Pengaduan::find($id);
+ $petugas = Auth::guard('petugas')->user();
+ 
+ return view('petugas.tanggapan.create',compact('showPengaduan','petugas'));
 }
 
     public function postPengaduan(Request $request)
@@ -48,11 +71,11 @@ public function index()
     
                  Pengaduan::create([
                     'tgl_pengaduan' => Carbon::now(),
-                    'nik' => $request->nik,
+                    'id_masyarakat' => $request->id_masyarakat,
                     'isi_laporan' => $request->isi_laporan,
                     'judul_laporan' => $request->judul_laporan,
                     'foto' => $namafile,
-                    'status' => '0',
+                    'status' => 'proses',
                     'created_at' => Carbon::now(),
                  ]);
                  return redirect()->back()->with('pesan','Berhasil Mengirim Pengaduan!');

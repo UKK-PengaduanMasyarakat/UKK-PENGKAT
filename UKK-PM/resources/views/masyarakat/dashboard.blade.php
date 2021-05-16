@@ -4,8 +4,8 @@
 
     <div class="container">
         <div class="container ms-5">
-                    <br>
-                    <br>
+            <br>
+            <br>
             <div class="row">
                 <div class="col-11">
                     <div id="myDIV" style="background-color: white; border-radius: 20px;">
@@ -13,62 +13,154 @@
                             <div class="container content">
                                 <div class="row">
                                     <div class="accordion accordion-flush" id="accordionFlushExample">
-                    
-                    
-                    
-                                        @forelse ($pengaduan as $pengadu)
-                                            <div class="accordion-item " style="border-radius: 15px;">
-                                                <h2 class="accordion-header" id="flush-heading{{ $loop->iteration }}">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                                        data-bs-target="#flush-collapse{{ $loop->iteration }}" aria-expanded="false"
-                                                        aria-controls="flush-collapseOne">
-                                                        <div class="col-5 text-dark">
-                                                            {{ $pengadu->judul_laporan }}
-                    
-                                                        </div>
-                                                        <div class="col-5 ">
-                                                            <span class="badge bg-info">{{ $pengadu->status == '0' ? 'proses' : '' }}</span>
-                    
-                                                        </div>
-                                                    </button>
-                                                </h2>
-                                                <div id="flush-collapse{{ $loop->iteration }}" class="accordion-collapse collapse"
-                                                    aria-labelledby="flush-heading{{ $loop->iteration }}"
-                                                    data-bs-parent="#accordionFlushExample">
-                                                    <div class="card mb-3" style="max-width: 100%; border: none;">
-                                                        <div class="row g-0">
-                                                            <div class="col-md-4">
-                                                                <img src="{{ asset('pengaduan/' . $pengadu->foto) }}"
-                                                                    style="width: 200px; height: 120px;" alt="...">
-                                                            </div>
-                                                            <div class="col-md-8">
-                                                                <div class="card-body">
-                                                                    <p class="card-text" style=" width: 600px;
-                                                              height: 110px;
-                                                              overflow: auto;
-                                                              color: black;">
-                                                                        {{ $pengadu->isi_laporan }}
-                                                                    </p>
-                                                                    <p class="card-text"><small
-                                                                            class="text-muted">{{ $pengadu->created_at->diffForHumans() }}</small>
-                                                                    </p>
+
+                                        <nav class="d-flex justify-content-center">
+                                            <div class="nav nav-tabs " id="nav-tab" role="tablist">
+                                                <button class="nav-link active" id="nav-proses-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#nav-proses" type="button" role="tab"
+                                                    aria-controls="nav-proses" aria-selected="true">Proses</button>
+                                                <button class="nav-link" id="nav-tanggapi-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#nav-tanggapi" type="button" role="tab"
+                                                    aria-controls="nav-tanggapi" aria-selected="false">Di tanggapi</button>
+                                                <button class="nav-link" id="nav-tolak-tab" data-bs-toggle="tab"
+                                                    data-bs-target="#nav-tolak" type="button" role="tab"
+                                                    aria-controls="nav-tolak" aria-selected="false">Di Tolak</button>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-proses" role="tabpanel"
+                                                aria-labelledby="nav-proses-tab">
+                                                @forelse ($pengaduan as $pengadu)
+                                                    <div class="accordion-item " style="border-radius: 15px;">
+                                                        <h2 class="accordion-header"
+                                                            id="flush-heading{{ $loop->iteration }}">
+                                                            <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#flush-collapse{{ $loop->iteration }}"
+                                                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                                                <div class="col-5 text-dark">
+                                                                    {{ $pengadu->judul_laporan }}
+
+                                                                </div>
+                                                                <div class="col-5 ">
+                                                                    <span
+                                                                        class="badge bg-info">{{ $pengadu->status }}</span>
+
+                                                                </div>
+                                                            </button>
+                                                        </h2>
+                                                        <div id="flush-collapse{{ $loop->iteration }}"
+                                                            class="accordion-collapse collapse"
+                                                            aria-labelledby="flush-heading{{ $loop->iteration }}"
+                                                            data-bs-parent="#accordionFlushExample">
+                                                            <div class="card mb-3" style="max-width: 100%; border: none;">
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-4">
+                                                                        <img src="{{ asset('img/' . $pengadu->foto) }}"
+                                                                            style="width: 200px; height: 120px;" alt="...">
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <div class="card-body">
+                                                                            <p class="card-text" style=" width: 600px;
+                                                                      height: 110px;
+                                                                      overflow: auto;
+                                                                      color: black;">
+                                                                                {{ $pengadu->isi_laporan }}
+                                                                            </p>
+                                                                            <p class="card-text"><small
+                                                                                    class="text-muted">{{ $pengadu->created_at->diffForHumans() }}</small>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @empty
+                                                    <div class="text-center mt-4 mb-4">
+                                                        <h4 class="text-dark">Anda belum melakukan pengaduan</h4>
+                                                    </div>
+
+                                                @endforelse
                                             </div>
-                                        @empty
-                    
-                    
-                                        @endforelse
+                                            <div class="tab-pane fade" id="nav-tanggapi" role="tabpanel"
+                                                aria-labelledby="nav-tanggapi-tab">
+                                                @forelse ($tanggapan as $tanggap)
+                                                    <div class="accordion-item " style="border-radius: 15px;">
+                                                        <h2 class="accordion-header"
+                                                            id="flush-heading{{ $loop->iteration }}">
+                                                            <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#flush-collapse{{ $loop->iteration }}"
+                                                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                                                <div class="col-5 text-dark">
+                                                                    {{ $tanggap->judul_laporan }}
+
+                                                                </div>
+                                                                <div class="col-5 ">
+                                                                    <span
+                                                                        class="badge bg-success">{{ $tanggap->status }}</span>
+
+                                                                </div>
+                                                            </button>
+                                                        </h2>
+                                                        <div id="flush-collapse{{ $loop->iteration }}"
+                                                            class="accordion-collapse collapse"
+                                                            aria-labelledby="flush-heading{{ $loop->iteration }}"
+                                                            data-bs-parent="#accordionFlushExample">
+                                                            <div class="card mb-3" style="max-width: 100%; border: none;">
+                                                                <div class="row g-0">
+                                                                    <div class="col-md-4">
+                                                                        <img src="{{ asset('img/' . $tanggap->foto) }}"
+                                                                            style="width: 200px; height: 120px;" alt="...">
+                                                                    </div>
+                                                                    <div class="col-md-8">
+                                                                        <div class="card-body">
+                                                                            <p class="card-text" style=" width: 600px;
+                                                                      height: 110px;
+                                                                      overflow: auto;
+                                                                      color: black;">
+                                                                                {{ $tanggap->isi_laporan }}
+                                                                            </p>
+                                                                            <label for=""><span class="text-dark">Baru di 
+                                                                                    tanggapi :</span></label>
+                                                                            <div class="row">
+                                                                                <div class="col-4">
+                                                                                    <p class="card-text"><small
+                                                                                            class="text-muted">{{ $tanggap->updated_at->diffForHumans() }}</small>
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="col-4">
+                                                                                    <button class="btn btn-dark">Lihat tanggapan</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @empty
+                                                    <div class="text-center mt-4 mb-4">
+                                                        <h4 class="text-dark">Anda belum melakukan pengaduan</h4>
+                                                    </div>
+
+                                                @endforelse
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-tolak" role="tabpanel"
+                                                aria-labelledby="nav-tolak-tab">
+
+                                            </div>
+                                        </div>
+
+
                                     </div>
-                    
+
                                 </div>
                                 {{ $pengaduan->links() }}
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -157,7 +249,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
 
-                                    <input type="hidden" name="nik" value="{{ $user->nik }}" id="">
+                                    <input type="hidden" name="id_masyarakat" value="{{ $user->id }}" id="">
                                 </div>
                             </div>
                             <br>
@@ -183,5 +275,5 @@
     <br>
     <br>
 
-  
+
 @endsection

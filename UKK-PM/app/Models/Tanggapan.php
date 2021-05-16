@@ -10,15 +10,18 @@ class Tanggapan extends Model
 {
     use HasFactory;
 
+    protected $table = 'tanggapan';
+    protected $guarded = [];
 
 
-    public function petugas()
+
+    public function Petugas()
     {
-        return $this->belongsTo('App\Models\Petugas');
+        return $this->belongsTo('App\Models\Petugas','id_petugas','id');
     }
-    public function pengaduan()
+    public function Pengaduan()
     {
-        return $this->belongsTo('App\Models\Pengaduan');
+        return $this->belongsTo('App\Models\Pengaduan','id_pengaduan','id');
         
     }
 }

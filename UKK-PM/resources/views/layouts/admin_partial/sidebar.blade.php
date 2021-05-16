@@ -51,7 +51,7 @@
                 </li>
                 @elseif( $petugas->level == 'petugas' )
                 <li class="nav-item">
-                    <a href="{{route('data.pengaduan')}}" class="nav-link {{'petugas/pengaduan' === request()->path() ? 'active' : ''}}">
+                    <a href="{{route('data.pengaduan')}}" class="nav-link {{'petugas/pengaduan' === request()->path() || 'petugas/pengaduan' === request()->path() || 'petugas/pengaduan/show/{*}' === request()->path()  ? 'active' : ''}}">
                         <i class="icon-home4"></i>
                         <span>
                             Pengaduan Verifikasi

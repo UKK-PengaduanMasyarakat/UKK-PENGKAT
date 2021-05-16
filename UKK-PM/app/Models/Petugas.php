@@ -14,8 +14,8 @@ class Petugas extends Model
     use Notifiable;
 
     
-    protected $guard = 'petugas';
-    protected $table = 'petugas';
+    protected $guard   = 'petugas';
+    protected $table   = 'petugas';
     protected $guarded = [];
 
     protected $hidden = ['password'];
@@ -23,9 +23,9 @@ class Petugas extends Model
 
 
    
-    public function tanggapan()
+    public function Tanggapan()
     {
-        return $this->hasMany('App\Models\Tanggapan');
+        return $this->hasMany('App\Models\Tanggapan','id_pengaduan','id_petugas','id_petugas','id');
     }
 
 }

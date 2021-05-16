@@ -35,6 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap" rel="stylesheet">
 
 
+
     <!-- /theme JS files -->
 
     <title>Hello, world!</title>
@@ -189,9 +190,9 @@
 
     <script>
         $(function() {
-            var duration = 4000; // 4 seconds
+            var duration = 3000; // 4 seconds
             setTimeout(function() {
-                $('#alertt').hide();
+                $('#alertt').hide().fadeout();
             }, duration);
         });
 

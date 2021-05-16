@@ -11,8 +11,14 @@ class Pengaduan extends Model
     protected $table = 'pengaduan';
     protected $guarded = [];
 
-    public function tanggapan()
+    public function Tanggapan()
     {
-        return $this->hasMany('App\Models\Tanggapan');
+        return $this->hasMany('App\Models\Tanggapan','id_pengaduan','id');
+    }
+
+    public function Masyarakat()
+    {
+        return $this->belongsTo('App\Models\Masyarakat','id_masyarakat','id');
+        
     }
 }

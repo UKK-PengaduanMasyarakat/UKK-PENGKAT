@@ -18,7 +18,7 @@ class CreateTanggapanTable extends Migration
             $table->unsignedBigInteger('id_pengaduan');
             $table->unsignedBigInteger('id_petugas');
             $table->date('tgl_tanggapan');
-            $table->text('tanggapan');
+            $table->text('tanggapan',350);
             $table->foreign('id_pengaduan')->references('id')->on('pengaduan');
             $table->foreign('id_petugas')->references('id')->on('petugas');
             $table->timestamps();

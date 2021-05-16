@@ -16,7 +16,10 @@ class Masyarakat extends Authenticable
     protected $guard = 'Masyarakat';
     protected $guarded = [];
 
-
+    public function Pengaduan()
+    {
+        return $this->hasMany('App\Models\Pengaduan','id_masyarakat','id');
+    }
 
 
     
