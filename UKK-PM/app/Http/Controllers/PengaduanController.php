@@ -16,8 +16,9 @@ class PengaduanController extends Controller
         $user = Auth::guard('masyarakat')->user();
         $pengaduan = Pengaduan::where('id_masyarakat','=',$user->id)->where('status','=','proses')->orderBy('created_at','DESC')->paginate(5);
         $tanggapan = Pengaduan::where('id_masyarakat','=',$user->id)->where('status','=','selesai')->orderBy('created_at','DESC')->paginate(5);
+        $tolak = Pengaduan::where('id_masyarakat','=',$user->id)->where('status','=','0')->orderBy('created_at','DESC')->paginate(5);
         // dd($pengaduan);
-        return view('masyarakat.dashboard',compact('user','pengaduan','tanggapan'));
+        return view('masyarakat.dashboard',compact('user','pengaduan','tanggapan','tolak'));
     }
 
 public function index()
@@ -35,6 +36,15 @@ public function detail($id)
 }
 
 
+public function tanggapanDetail($id)
+{
+    
+    $detail = Tanggapan::with('Pengaduan')->where('id_pengaduan','=',$id)->first();
+    // dd($detail);
+
+    return view('masyarakat.tanggapan',compact('detail'));
+
+}
 
 
 public function getEntri($id)

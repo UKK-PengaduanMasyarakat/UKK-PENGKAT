@@ -26,20 +26,20 @@
     </div>
     <br>
     <div class="container">
-		@if ($message=Session::get('pesan'))
-		<div id="alertt">
-			<div class="alert alert-success d-flex align-items-center" role="alert">
-				<i class="icon-checkmark-circle text-dark"></i>
-				<div class="text-dark">
-				 {{$message}}
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				@if ($message=Session::get('pesan'))
+				<div id="alertt">
+					<div class="alert alert-success d-flex align-items-center" role="alert">
+						<i class="icon-checkmark-circle text-dark"></i>
+						<div class="text-dark">
+						 {{$message}}
+						</div>
+					  </div>
 				</div>
-			  </div>
-		</div>
-	@endif
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-
-                <div class="card">
+			@endif
+				
+				<div class="card">
 					<div class="card-header header-elements-inline">
 						<h5 class="card-title">Pengaduan Masyarakat (Verifikasi)</h5>
 						<div class="header-elements">
@@ -62,7 +62,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@forelse ($pengaduanProses as $prss)
+							@foreach ($pengaduanProses as $prss)
 							<tr  style="background-color: rgb(149, 171, 192);">
 								<td>{{$loop->iteration}}</td>
 								<td>{{$prss->Masyarakat->nama}}</td>
@@ -77,7 +77,7 @@
 											</a>
 											<div class="dropdown-menu dropdown-menu-right">
 												<a href="{{route('getEntri',$prss->id)}}" class="dropdown-item"><i class="icon-pencil7 text-primary"></i>Tanggapi</a>
-												<a href="" class="dropdown-item"><i class="icon-close2 text-danger"></i>Tolak</a>
+												<a href="{{route('tolak.entri',$prss->id)}}" class="dropdown-item"><i class="icon-close2 text-danger"></i>Tolak</a>
 												<a href="{{route('show.pengaduan',$prss->id)}}" class="dropdown-item"><i class="icon-eye"></i>Detail</a>
 											</div>
 										</div>
@@ -85,9 +85,9 @@
 								</td>
 							</tr>
 							
-							@empty
-								
-							@endforelse
+					
+						
+							@endforeach
 						</tbody>
 					</table>
 				</div>

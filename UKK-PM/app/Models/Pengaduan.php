@@ -13,7 +13,7 @@ class Pengaduan extends Model
 
     public function Tanggapan()
     {
-        return $this->hasMany('App\Models\Tanggapan','id_pengaduan','id');
+        return $this->hasOne('App\Models\Tanggapan','id_pengaduan','id');
     }
 
     public function Masyarakat()

@@ -39,4 +39,22 @@ class TanggapanController extends Controller
 
         
     }
+    public function tanggapanTolak($id)
+    {
+        // dd($request);
+
+
+        
+
+
+        Pengaduan::find($id)->update([
+            'status' => '0',
+         ]);
+
+         return redirect()->back()->with('pesan','Berhasil  Tolak tanggapan!');
+
+                
+
+        
+    }
 }

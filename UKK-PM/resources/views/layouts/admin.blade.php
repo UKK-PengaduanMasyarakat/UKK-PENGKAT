@@ -90,12 +90,13 @@
         $("#textarea").keyup(function() {
             $("#count").text("Characters left: " + (350 - $(this).val().length));
         });
-		$(function() {
-            var duration = 3000; // 4 seconds
-            setTimeout(function() {
-                $('#alertt').fadeout();
-            }, duration);
-        });
+	
+		$("#alertt").children().delay(3000)
+.fadeOut(function() {
+   $(this).remove(); 
+});
+
+		
     </script>
 </body>
 
