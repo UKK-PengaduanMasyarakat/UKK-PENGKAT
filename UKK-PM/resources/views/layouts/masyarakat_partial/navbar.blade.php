@@ -17,7 +17,7 @@
                     </li>
                 @endguest   
                 <li class="nav-item me-4">
-                    <a class="nav-link" href="#">About me</a>
+                    <a class="nav-link" href="#about">About me</a>
                 </li>
                 <li class="nav-item me-4">
                     <a class="nav-link" href="#">Contact</a>
@@ -26,7 +26,7 @@
             <!-- <a href="#" class="btn btn-transparant me-3 text-white">Log in</a> -->
             @guest
                 @if ('www.ngadu!.com' === request()->path())
-                     <a href="{{ route('login') }}" class="btn btn-light">Log in </a>
+                     <a href="{{ route('login') }}" class="btn text-white" style="background-color: #3490dc">Log in </a>
                         
                 @else
 

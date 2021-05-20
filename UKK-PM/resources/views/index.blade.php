@@ -23,39 +23,41 @@
                 </div>
         
                 <div class="col-6">
-                <img src="megaphone.jpg" alt="">
+                <img src="{{asset('7630.svg')}}" alt="" style="width: 600px">
                 </div>
             </div>
         </div>
         <!-- header tutup -->
     
         <!-- hero buka -->
-        <div class="container">
-            <div class="row text-center" style="margin-top: 20%;">
-                <h1>3 Keys Benefit</h1>
-                <p>You can easily manage your business with a powerfull tools</p>
+        <section id="about">
+            <div class="container">
+                <div class="row text-center" style="margin-top: 20%;">
+                    <h1>3 Keys Benefit</h1>
+                    <p>You can easily manage your business with a powerfull tools</p>
+                </div>
+                <div class="row d-flex justify-content-evenly" style="margin-top: 5%; margin-bottom: 15%;">
+                    <div class="col-3 text-center">
+                        <img src="#" alt="" style="width: 70px;">
+                        <h3>Easy to Operate</h3>
+                        <p>This can easily help you to
+                            grow up your business fast</p>
+                    </div>
+                    <div class="col-3 text-center">
+                        <img src="#" alt="" style="width: 70px;">
+                        <h3>Real-Time analytic</h3>
+                        <p>With real-time analytics, you
+                            can check data in real time</p>
+                    </div>
+                    <div class="col-3 text-center">
+                        <img src="#" alt="" style="width: 70px;">
+                        <h3>Very Full Secured</h3>
+                        <p>With real-time analytics, we
+                            will guarantee your data</p>
+                    </div>
+                </div>
             </div>
-            <div class="row d-flex justify-content-evenly" style="margin-top: 5%; margin-bottom: 15%;">
-                <div class="col-3 text-center">
-                    <img src="#" alt="" style="width: 70px;">
-                    <h3>Easy to Operate</h3>
-                    <p>This can easily help you to
-                        grow up your business fast</p>
-                </div>
-                <div class="col-3 text-center">
-                    <img src="#" alt="" style="width: 70px;">
-                    <h3>Real-Time analytic</h3>
-                    <p>With real-time analytics, you
-                        can check data in real time</p>
-                </div>
-                <div class="col-3 text-center">
-                    <img src="#" alt="" style="width: 70px;">
-                    <h3>Very Full Secured</h3>
-                    <p>With real-time analytics, we
-                        will guarantee your data</p>
-                </div>
-            </div>
-        </div>
+        </section>
         <!-- hero tutup -->
     
         <!-- content buka -->
