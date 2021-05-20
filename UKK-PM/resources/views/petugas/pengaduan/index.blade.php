@@ -105,7 +105,7 @@
             var table = $('#datatable').DataTable({
                 // dom: 't<"bottom"<"row"<"col-6"i><"col-6 mb-4"p>>>',
                 destroy: true,
-                searching: false,
+                searching: true,
                 serverside: true,
                 processing: true,
                 serverSide: true,
@@ -135,12 +135,12 @@
                         name: 'judul_laporan'
                     },
                     {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
                         data: 'created_at',
                         name: 'created_at'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
                     },
                     {
                         data: 'action',

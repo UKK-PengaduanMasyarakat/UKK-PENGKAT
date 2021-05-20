@@ -1,5 +1,8 @@
 @extends('layouts.admin')
+@push('link')
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@endpush
 @section('content')
 	<!-- Main charts -->
     <div class="page-header page-header-light">
@@ -61,7 +64,7 @@
                 <!-- Traffic sources -->
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h6 class="card-title">Dashboard Pengaduan Masyarakat Tahun 2020</h6>
+                        <h6 class="card-title">Dashboard Pengaduan Masyarakat Tahun {{Carbon\Carbon::now()->format('Y')}}</h6>
                         <div class="header-elements">
                             <div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
                               
@@ -75,10 +78,11 @@
                             <div class="col-sm-4">
                                 <div class="d-flex align-items-center justify-content-center mb-2">
                                     <a href="#" class="btn bg-transparent border-teal text-teal rounded-round border-2 btn-icon mr-3">
-                                        <i class="icon-plus3"></i>
+                                        <i class="icon-megaphone"> </i>
+                                        {{-- <i class="fas fa-bullhorn"></i> --}}
                                     </a>
                                     <div>
-                                        <div class="font-weight-semibold">Total Pengaduan 2020</div>
+                                        <div class="font-weight-semibold">Total Pengaduan {{Carbon\Carbon::now()->format('Y')}}</div>
                                         <span class="text-muted countt">{{$pengaduan}} </span>
                                     </div>
                                 </div>

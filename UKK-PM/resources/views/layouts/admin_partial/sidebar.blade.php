@@ -32,7 +32,7 @@
                 <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
                 <li class="nav-item">
                     <a href="{{route('petugas.dashboard')}}" class="nav-link {{'petugas/dashboard' === request()->path() ? 'active' : ''}}">
-                        <i class="icon-home4"></i>
+                        <i class="icon-stats-bars2"></i>
                         <span>
                             Dashboard
                         </span>
@@ -52,7 +52,7 @@
                 @elseif( $petugas->level == 'petugas' )
                 <li class="nav-item">
                     <a href="{{route('data.pengaduan')}}" class="nav-link {{'petugas/pengaduan' === request()->path() || 'petugas/pengaduan' === request()->path() || 'petugas/pengaduan/show/{*}' === request()->path()  ? 'active' : ''}}">
-                        <i class="icon-home4"></i>
+                        <i class="icon-inbox"></i>
                         <span>
                             Pengaduan Verifikasi
                         </span>
