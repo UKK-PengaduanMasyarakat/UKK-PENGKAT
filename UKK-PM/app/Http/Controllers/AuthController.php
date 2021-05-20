@@ -25,7 +25,7 @@ class AuthController extends Controller
         if (auth()->guard('petugas')->attempt($credentials)) {
             return redirect()->route('petugas.dashboard');
         }else if (auth()->guard('masyarakat')->attempt($credentials)) {
-            return redirect()->route('buat.pengaduan');
+            return redirect()->route('proses.pengaduan');
         }else{
             return back()->with('error','Username atau Password tidak cocok');    
         }

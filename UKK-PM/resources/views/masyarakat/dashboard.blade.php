@@ -16,206 +16,17 @@
 
                                         <nav class="d-flex justify-content-center">
                                             <div class="nav nav-tabs " id="nav-tab" role="tablist">
-                                                <button class="nav-link active" id="nav-proses-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#nav-proses" type="button" role="tab"
-                                                    aria-controls="nav-proses" aria-selected="true">Proses</button>
-                                                <button class="nav-link" id="nav-tanggapi-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#nav-tanggapi" type="button" role="tab"
-                                                    aria-controls="nav-tanggapi" aria-selected="false">Di tanggapi</button>
-                                                <button class="nav-link" id="nav-tolak-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#nav-tolak" type="button" role="tab"
-                                                    aria-controls="nav-tolak" aria-selected="false">Di Tolak</button>
+                                                <a href="{{route('proses.pengaduan')}}" class="nav-link {{$tab == 'proses' ? 'active' : ''}}" id="nav-proses-tab" 
+                                                    aria-controls="nav-proses" aria-selected="true">Proses</a>
+                                                <a href="{{route('tanggapi.pengaduan')}}" class="nav-link {{$tab == 'tanggapi' ? 'active' : ''}}" id="nav-tanggapi-tab" 
+                                                    aria-controls="nav-tanggapi" aria-selected="false">Di tanggapi</a>
+                                                <a href="{{route('tolak.pengaduan')}}" class="nav-link {{$tab == 'tolak' ? 'active' : ''}}" id="nav-tolak-tab" 
+                                                    aria-controls="nav-tolak" aria-selected="false">Di Tolak</a>
                                             </div>
                                         </nav>
+
                                         <div class="tab-content" id="nav-tabContent">
-                                            <div class="tab-pane fade show active" id="nav-proses" role="tabpanel"
-                                                aria-labelledby="nav-proses-tab">
-                                                @forelse ($pengaduan as $pengadu)
-                                                    <div class="accordion-item " style="border-radius: 15px;">
-                                                        <h2 class="accordion-header"
-                                                            id="flush-heading{{ $loop->iteration }}">
-                                                            <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse"
-                                                                data-bs-target="#flush-collapse{{ $loop->iteration }}"
-                                                                aria-expanded="false" aria-controls="flush-collapseOne">
-                                                                <div class="col-5 text-dark">
-                                                                    {{ $pengadu->judul_laporan }}
-
-                                                                </div>
-                                                                <div class="col-5 ">
-                                                                    <span
-                                                                        class="badge bg-info">{{ $pengadu->status }}</span>
-
-                                                                </div>
-                                                            </button>
-                                                        </h2>
-                                                        <div id="flush-collapse{{ $loop->iteration }}"
-                                                            class="accordion-collapse collapse"
-                                                            aria-labelledby="flush-heading{{ $loop->iteration }}"
-                                                            data-bs-parent="#accordionFlushExample">
-                                                            <div class="card mb-3" style="max-width: 100%; border: none;">
-                                                                <div class="row g-0">
-                                                                    <div class="col-md-4">
-                                                                        <img src="{{ asset('img/' . $pengadu->foto) }}"
-                                                                            style="width: 200px; height: 120px;" alt="...">
-                                                                    </div>
-                                                                    <div class="col-md-8">
-                                                                        <div class="card-body">
-                                                                            <p class="card-text" style=" width: 600px;
-                                                                      height: 110px;
-                                                                      overflow: auto;
-                                                                      color: black;">
-                                                                                {{ $pengadu->isi_laporan }}
-                                                                            </p>
-                                                                            <p class="card-text"><small
-                                                                                    class="text-muted">{{ $pengadu->created_at->diffForHumans() }}</small>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @empty
-                                                    <div class="text-center mt-4 mb-4">
-                                                        <h4 class="text-dark">Anda belum melakukan pengaduan</h4>
-                                                    </div>
-
-                                                @endforelse
-                                {{ $pengaduan->links() }}
-                                            
-                                            </div>
-
-                                            <div class="tab-pane fade" id="nav-tanggapi" role="tabpanel"
-                                                aria-labelledby="nav-tanggapi-tab">
-                                                @forelse ($tanggapan as $tanggap)
-                                                    <div class="accordion-item " style="border-radius: 15px;">
-                                                        <h2 class="accordion-header"
-                                                            id="flush-heading{{ $loop->iteration }}">
-                                                            <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse"
-                                                                data-bs-target="#flush-collapse{{ $loop->iteration }}"
-                                                                aria-expanded="false" aria-controls="flush-collapseOne">
-                                                                <div class="col-5 text-dark">
-                                                                    {{ $tanggap->judul_laporan }}
-
-                                                                </div>
-                                                                <div class="col-5 ">
-                                                                    <span
-                                                                        class="badge bg-success">{{ $tanggap->status === 'selesai' ? 'di tanggapi' : '' }}</span>
-
-                                                                </div>
-                                                            </button>
-                                                        </h2>
-                                                        <div id="flush-collapse{{ $loop->iteration }}"
-                                                            class="accordion-collapse collapse"
-                                                            aria-labelledby="flush-heading{{ $loop->iteration }}"
-                                                            data-bs-parent="#accordionFlushExample">
-                                                            <div class="card mb-3" style="max-width: 100%; border: none;">
-                                                                <div class="row g-0">
-                                                                    <div class="col-md-4">
-                                                                        <img src="{{ asset('img/' . $tanggap->foto) }}"
-                                                                            style="width: 200px; height: 120px;" alt="...">
-                                                                    </div>
-                                                                    <div class="col-md-8">
-                                                                        <div class="card-body">
-                                                                            <p class="card-text" style=" width: 600px;
-                                                                      height: 110px;
-                                                                      overflow: auto;
-                                                                      color: black;">
-                                                                                {{ $tanggap->isi_laporan }}
-                                                                            </p>
-                                                                            <label for=""><span class="text-dark">Baru di 
-                                                                                    tanggapi :</span></label>
-                                                                            <div class="row">
-                                                                                <div class="col-4">
-                                                                                    <p class="card-text"><small
-                                                                                            class="text-muted">{{ $tanggap->updated_at->diffForHumans() }}</small>
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="col-4">
-                                                                                    <a href="{{route('tanggapan',$tanggap->id)}}" class="btn btn-success">Lihat tanggapan <i class="icon-eye text-white"></i></a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @empty
-                                                    <div class="text-center mt-4 mb-4">
-                                                        <h4 class="text-dark">Belum ada yang di tanggapi</h4>
-                                                    </div>
-
-                                                @endforelse
-                                {{ $tanggapan->links() }}
-
-                                            </div>
-                                            <div class="tab-pane fade" id="nav-tolak" role="tabpanel"
-                                                aria-labelledby="nav-tolak-tab">
-                                                @forelse ($tolak as $tol)
-                                                <div class="accordion-item " style="border-radius: 15px;">
-                                                    <h2 class="accordion-header"
-                                                        id="flush-heading{{ $loop->iteration }}">
-                                                        <button class="accordion-button collapsed" type="button"
-                                                            data-bs-toggle="collapse"
-                                                            data-bs-target="#flush-collapse{{ $loop->iteration }}"
-                                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                                            <div class="col-5 text-dark">
-                                                                {{ $tol->judul_laporan }}
-
-                                                            </div>
-                                                            <div class="col-5 ">
-                                                                <span
-                                                                    class="badge bg-danger">{{ $tol->status == '0' ? 'di tolak' : '' }}</span>
-
-                                                            </div>
-                                                        </button>
-                                                    </h2>
-                                                    <div id="flush-collapse{{ $loop->iteration }}"
-                                                        class="accordion-collapse collapse"
-                                                        aria-labelledby="flush-heading{{ $loop->iteration }}"
-                                                        data-bs-parent="#accordionFlushExample">
-                                                        <div class="card mb-3" style="max-width: 100%; border: none;">
-                                                            <div class="row g-0">
-                                                                <div class="col-md-4">
-                                                                    <img src="{{ asset('img/' . $tol->foto) }}"
-                                                                        style="width: 200px; height: 120px;" alt="...">
-                                                                </div>
-                                                                <div class="col-md-8">
-                                                                    <div class="card-body">
-                                                                        <p class="card-text" style=" width: 600px;
-                                                                  height: 110px;
-                                                                  overflow: auto;
-                                                                  color: black;">
-                                                                            {{ $tol->isi_laporan }}
-                                                                        </p>
-                                                                        <label for=""><span class="text-dark"> di Tolak :</span></label>
-                                                                        <div class="row">
-                                                                            <div class="col-4">
-                                                                                <p class="card-text"><small
-                                                                                        class="text-muted">{{ $tol->updated_at->diffForHumans() }}</small>
-                                                                                </p>
-                                                                            </div>
-                                                                            <div class="col-4">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @empty
-                                                <div class="text-center mt-4 mb-4">
-                                                    <h4 class="text-dark">Belum ada yang di Tolak</h4>
-                                                </div>
-
-                                            @endforelse
-                                {{ $tolak->links() }}
-
-                                            </div>
+                                            @yield('content_laporan')
                                         </div>
 
 
@@ -319,7 +130,8 @@
                             <br>
                             <div class="form-group-row">
                                 <div class="col-lg-12">
-                                    <button class="btn " style="background-color: rgb(71, 95, 175);"><b>Kirim Pengaduan</b>
+                                    <button class="btn btn-submit" style="background-color: rgb(71, 95, 175);"><b>Kirim
+                                            Pengaduan</b>
                                         <i class="icon-quill4"></i></button>
                                 </div>
                             </div>
@@ -341,3 +153,57 @@
 
 
 @endsection
+
+
+
+@push('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script>
+        $(document).ready(function() {
+
+            $(".btn-submit").click(function(e) {
+
+                e.preventDefault();
+
+                // var data = $(this).serialize();
+                var foto = $("input[name=foto]").val();
+                var judul_laporan = $("input[name=judul_laporan]").val();
+                var id_masyarakat = $("input[name=id_masyarakat]").val();
+                console.log(foto,judul_laporan,id_masyarakat);
+                var url = "{{ route('post.pengaduan') }}";
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                    url: url,
+                    type: 'POST',
+                    dataType: 'json',
+                    data:{
+                        foto:foto,
+                        judul_laporan:judul_laporan,
+                        isi_laporan:isi_laporan,
+                        id_masyarakat:id_masyarakat,
+                    },
+                    success: function(response) {
+                        console.log
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: 'good!',
+                            });
+                        }
+
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            });
+
+            
+        });
+     
+
+    </script>
+@endpush

@@ -10,7 +10,7 @@
         <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img style="width: 100%; height: 100%; border-radius: 8px;" src="{{asset('img/'.$detail->Pengaduan->foto)}}" alt="...">
+                <img style="max-width: 100%; max-height: 100%; border-radius: 8px; height: 250px; width: 400px;" src="{{asset('img/'.$detail->Pengaduan->foto)}}" alt="...">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -19,7 +19,7 @@
                           <h5 class="card-title text-dark">{{$detail->Pengaduan->judul_laporan}} </h5>
                         </div>
                         <div class="col-4 ms-5">
-                            <a href="{{route('buat.pengaduan')}}" class="btn btn-dark ms-5 " > <i class="icon-exit text-white" style="transform: rotate(180deg);"> </i> Kembali</a>
+                            <a href="{{route('proses.pengaduan')}}" class="btn btn-dark ms-5 " > <i class="icon-exit text-white" style="transform: rotate(180deg);"> </i> Kembali</a>
                         </div>
                     </div>
 

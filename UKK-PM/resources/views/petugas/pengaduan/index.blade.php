@@ -50,7 +50,7 @@
 					<div class="card-body">
 					</div>
 
-					<table class="table datatable-basic">
+					<table class="table datatable-basic" id="datatable">
 						<thead>
 							<tr>
 								<th>No</th>
@@ -62,7 +62,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($pengaduanProses as $prss)
+							{{-- @foreach ($pengaduanProses as $prss)
 							<tr  style="background-color: rgb(149, 171, 192);">
 								<td>{{$loop->iteration}}</td>
 								<td>{{$prss->Masyarakat->nama}}</td>
@@ -87,7 +87,7 @@
 							
 					
 						
-							@endforeach
+							@endforeach --}}
 						</tbody>
 					</table>
 				</div>
@@ -96,3 +96,61 @@
         </div>
     </div>
 @endsection
+
+
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            var table = $('#datatable').DataTable({
+                // dom: 't<"bottom"<"row"<"col-6"i><"col-6 mb-4"p>>>',
+                destroy: true,
+                searching: false,
+                serverside: true,
+                processing: true,
+                serverSide: true,
+                "responsive": true,
+                "autoWidth": false,
+                ajax: {
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ route('data.pengaduan.ajax') }}",
+                    type: "post",
+                    data: function(data) {
+                        data = '';
+                        return data
+                    }
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'id_masyarakat',
+                        name: 'id_masyarakat.nama'
+                    },
+                    {
+                        data: 'judul_laporan',
+                        name: 'judul_laporan'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    }
+                ],
+            });
+        });
+
+    </script>
+@endpush
+
+

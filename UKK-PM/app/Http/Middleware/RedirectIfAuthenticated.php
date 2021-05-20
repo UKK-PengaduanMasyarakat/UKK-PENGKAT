@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
             if (Auth::guard('petugas')->check()) {
                    return redirect()->route('petugas.dashboard');
             } else if (Auth::guard('masyarakat')->check()) {
-               return redirect()->route('buat.pengaduan');
+               return redirect()->route('proses.pengaduan');
             }else{
                 return $next($request);
 

@@ -35,7 +35,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap" rel="stylesheet">
 
 
-
     <!-- /theme JS files -->
 
     <title>Hello, world!</title>
@@ -178,6 +177,7 @@
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
     </script>
     <script src="{{ asset('global_assets/') }}/js/demo_pages/form_inputs.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
@@ -224,6 +224,9 @@
       }
     }
     </script>
+
+@stack('script')
+
 </body>
 
 </html>

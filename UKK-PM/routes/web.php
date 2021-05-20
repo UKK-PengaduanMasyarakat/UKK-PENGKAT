@@ -59,10 +59,10 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 		Route::put('/update/{id}',[MasyarakatController::class,'update'])->name('update.masyarakat');
 		Route::delete('/data/{id}',[MasyarakatController::class,'destroy'])->name('delete.masyarakat');
 	});
-
 	// Pengaduan
 	Route::group(['prefix' => 'pengaduan', 'middleware'=>['auth']], function() {
 		Route::get('/',[PengaduanController::class,'index'])->name('data.pengaduan');
+		Route::post('/ajax',[PengaduanController::class,'ajax'])->name('data.pengaduan.ajax');
 		Route::get('/entri',[PengaduanController::class,'entri'])->name('verifikasi');
 		Route::get('/show/{id}',[PengaduanController::class,'detail'])->name('show.pengaduan');
 		Route::get('/tanggapan/{id}',[PengaduanController::class,'getEntri'])->name('getEntri');
@@ -84,9 +84,12 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 
 // Masyarakat
 Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
-	// Route::get('/',[MasyarakatController::class,'dashboard'])->name('masyarakat.dashboard');
+	Route::get('/',[MasyarakatController::class,'dashboard'])->name('masyarakat.dashboard');
 	Route::get('/detail/{id}','masyarakatController@detail')->name('detail.pengaduan');
-	Route::get('/tulis',[PengaduanController::class,'tulis'])->name('buat.pengaduan');
+	// Route::get('/tulis',[PengaduanController::class,'tulis'])->name('buat.pengaduan');
+	Route::get('/proses',[PengaduanController::class,'proses'])->name('proses.pengaduan');
+	Route::get('/ditanggapi',[PengaduanController::class,'ditanggapi'])->name('tanggapi.pengaduan');
+	Route::get('/tolak',[PengaduanController::class,'tolak'])->name('tolak.pengaduan');
 	Route::post('/kirimpengaduan',[PengaduanController::class,'postPengaduan'])->name('post.pengaduan');
 	Route::get('/tanggapan/detail/{id}',[PengaduanController::class,'tanggapanDetail'])->name('tanggapan');
 	

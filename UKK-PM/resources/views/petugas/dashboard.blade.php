@@ -61,27 +61,25 @@
                 <!-- Traffic sources -->
                 <div class="card">
                     <div class="card-header header-elements-inline">
-                        <h6 class="card-title">Traffic sources</h6>
+                        <h6 class="card-title">Dashboard Pengaduan Masyarakat Tahun 2020</h6>
                         <div class="header-elements">
                             <div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
-                                <label class="form-check-label">
-                                    Live update:
-                                    <input type="checkbox" class="form-input-switchery" checked data-fouc>
-                                </label>
+                              
                             </div>
                         </div>
                     </div>
     
                     <div class="card-body py-0">
                         <div class="row">
+                            
                             <div class="col-sm-4">
                                 <div class="d-flex align-items-center justify-content-center mb-2">
                                     <a href="#" class="btn bg-transparent border-teal text-teal rounded-round border-2 btn-icon mr-3">
                                         <i class="icon-plus3"></i>
                                     </a>
                                     <div>
-                                        <div class="font-weight-semibold">New visitors</div>
-                                        <span class="text-muted">2,349 avg</span>
+                                        <div class="font-weight-semibold">Total Pengaduan 2020</div>
+                                        <span class="text-muted countt">{{$pengaduan}} </span>
                                     </div>
                                 </div>
                                 <div class="w-75 mx-auto mb-3" id="new-visitors"></div>
@@ -89,15 +87,15 @@
     
                             <div class="col-sm-4">
                                 <div class="d-flex align-items-center justify-content-center mb-2">
-                                    <a href="#" class="btn bg-transparent border-warning-400 text-warning-400 rounded-round border-2 btn-icon mr-3">
-                                        <i class="icon-watch2"></i>
+                                    <a href="#" class="btn bg-transparent border-black-400 text-black-400 rounded-round border-2 btn-icon mr-3">
+                                        <i class="icon-user-tie"></i>
                                     </a>
                                     <div>
-                                        <div class="font-weight-semibold">New sessions</div>
-                                        <span class="text-muted">08:20 avg</span>
+                                        <div class="font-weight-semibold">Petugas</div>
+                                        <span class="text-muted">{{$petugas}} Orang</span>
                                     </div>
                                 </div>
-                                <div class="w-75 mx-auto mb-3" id="new-sessions"></div>
+                                <div class="w-75 mx-auto mb-3 " style="stroke: black;" id="new-sessions"></div>
                             </div>
     
                             <div class="col-sm-4">
@@ -106,18 +104,89 @@
                                         <i class="icon-people"></i>
                                     </a>
                                     <div>
-                                        <div class="font-weight-semibold">Total online</div>
-                                        <span class="text-muted"><span class="badge badge-mark border-success mr-2"></span> 5,378 avg</span>
+                                        <div class="font-weight-semibold">Masyarakat</div>
+                                        <span class="text-muted"><span class="badge  border-success mr-2"></span> {{$masyarakat}} orang</span>
                                     </div>
                                 </div>
                                 <div class="w-75 mx-auto mb-3" id="total-online"></div>
                             </div>
+                            <div class="col-lg-4">
+
+								<!-- Today's revenue -->
+								<div class="card bg-blue-400">
+									<div class="card-body">
+										<div class="d-flex">
+											<h3 class="font-weight-semibold mb-0">Proses</h3>
+											<div class="list-icons ml-auto">
+						                		<a class="list-icons-item" data-action="reload"></a>
+						                	</div>
+					                	</div>
+					                	
+					                	<div>
+											Bulan Mei
+											<div class="font-size-sm opacity-75">{{$proses_now}}</div>
+										</div>
+									</div>
+
+								</div>
+								<!-- /today's revenue -->
+
+							</div>
+                            <div class="col-lg-4">
+
+								<!-- Today's revenue -->
+								<div class="card bg-success-400">
+									<div class="card-body">
+										<div class="d-flex">
+											<h3 class="font-weight-semibold mb-0">Tanggapi</h3>
+											<div class="list-icons ml-auto">
+						                		<a class="list-icons-item" data-action="reload"></a>
+						                	</div>
+					                	</div>
+					                	
+					                	<div>
+											Bulan Mei
+											<div class="font-size-sm opacity-75">{{$tanggapi_now}}</div>
+										</div>
+									</div>
+
+								</div>
+								<!-- /today's revenue -->
+
+							</div>
+                            <div class="col-lg-4">
+
+								<!-- Today's revenue -->
+								<div class="card bg-danger-400">
+									<div class="card-body">
+										<div class="d-flex">
+											<h3 class="font-weight-semibold mb-0">Tolak</h3>
+											<div class="list-icons ml-auto">
+						                		<a class="list-icons-item" data-action="reload"></a>
+						                	</div>
+					                	</div>
+					                	
+					                	<div>
+											Bulan Mei
+											<div class="font-size-sm opacity-75">{{$tolak_now}}</div>
+										</div>
+									</div>
+
+								</div>
+								<!-- /today's revenue -->
+
+							</div>  
+                            
                         </div>
                     </div>
-    
-                    <div class="chart position-relative" id="traffic-sources"></div>
+                    
+                    {{-- BUlanan laporan --}}
+                    <div id="pengaduan_pertahun">
+
+                    </div>
+                    {{-- BUlanan laporan --}}
+
                 </div>
-                <!-- /traffic sources -->
     
             </div>
     
@@ -127,7 +196,7 @@
     
     
         <!-- Dashboard content -->
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-8">
     
                 <!-- Marketing campaigns -->
@@ -598,9 +667,101 @@
             </div>
     
     
-        </div>
+        </div> --}}
 
     </div>
     <!-- /dashboard content -->
 
 @endsection
+
+
+
+
+
+
+
+@push('script')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script>
+    $('.countt').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+
+</script>
+<script>
+   Highcharts.chart('pengaduan_pertahun', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Laporan Data Pengaduan'
+    },
+    subtitle: {
+        text: 'Source: www.ngadU!.com'
+    },
+    xAxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ],
+        crosshair: true
+    },
+    
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Bulanan'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:1f} jumlah</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    colors: ['#3385ff', '#50B432', '#cc0000', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+    series: [{
+        name: 'Proses',
+        data: {!!json_encode($proses)!!}
+
+    }, {
+        name: 'Tanggapi',
+        data: {!!json_encode($selesai)!!}
+
+    }, {
+        name: 'Tolak',
+        data: {!!json_encode($tolak)!!}
+
+    }
+    ]
+});
+    
+</script>
+@endpush

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
 
     <!-- Global stylesheets -->
@@ -85,6 +85,10 @@
     </div>
     @include('layouts.admin_partial.footer')
     <!-- /page content -->
+    <script src="{{ asset('global_assets/') }}/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="{{ asset('global_assets/') }}/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="{{ asset('global_assets/') }}/js/demo_pages/datatables_basic.js"></script>
+
 
     <script>
         $("#textarea").keyup(function() {
@@ -98,6 +102,10 @@
 
 		
     </script>
+
+
+@stack('script')
+
 </body>
 
 </html>
