@@ -46,9 +46,13 @@ class MasyarakatController extends Controller
 
     }
 
-    public function dashboard()
-    {
-        
+    public function history($id)
+    {   
+        // dd($id);
+        $history  = Pengaduan::where('id_masyarakat','=',$id)->orWhere('status','selesai')->orWhere('status','0')->orderBy('created_at','DESC')->paginate(3);
+        // dd($history);
+
+            return view('masyarakat.history_pengaduan',compact('history'));
     }
 
 
@@ -61,6 +65,14 @@ class MasyarakatController extends Controller
         return view('petugas.masyarakat.index',compact('masyarakat'));
         
     }
+
+    public function data()
+    {   
+        $masyarakat = Masyarakat::paginate(10);
+        return view('petugas.masyarakat.laporan',compact('masyarakat'));
+        
+    }
+
     public function edit($id)
     {
         $masyarakat = Masyarakat::find($id);

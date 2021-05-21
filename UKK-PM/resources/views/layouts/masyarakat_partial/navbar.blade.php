@@ -6,14 +6,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
                 <li class="nav-item me-4">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link " aria-current="page" href="{{route('proses.pengaduan')}}">Home</a>
                 </li>
 
                 @guest
 
                 @else
                     <li class="nav-item me-4">
-                        <a class="nav-link" href="#">History Pengaduan</a>
+                        <a class="nav-link" href="{{route('history.pengaduan',$user->id)}}">History Pengaduan</a>
                     </li>
                 @endguest   
                 <li class="nav-item me-4">

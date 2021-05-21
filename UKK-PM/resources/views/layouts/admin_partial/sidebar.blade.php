@@ -74,6 +74,17 @@
                   </ul>
               </li>
               @endif
+
+
+
+            <li class="nav-item nav-item-submenu  {{'petugas/pengaduan' === request()->path() ||'petugas/dashboard' === request()->path() || 'petugas/masyarakat/data' === request()->path() ?  '' : 'nav-item-expanded nav-item-open'}} ">
+                <a href="#" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active ' : ''}}"><i class="icon-file-text3"></i> <span> Laporan</span></a>
+
+                  <ul class="nav nav-group-sub" data-submenu-title="Widgets">
+                      <li class="nav-item"><a href="{{route('laporan.pengaduan')}}" class="nav-link {{'petugas/pengaduan/laporan_data' === request()->path() ? 'active' : ''}}">Laporan Pengaduan</a></li>
+                      <li class="nav-item"><a href="{{route('laporan.masyarakat')}}" class="nav-link {{'petugas/masyarakat/laporan_data' === request()->path() ? 'active' : ''}}">Laporan Masyarakat</a></li>
+                  </ul>
+              </li>
             
               {{-- petuags --}}
               

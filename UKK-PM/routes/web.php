@@ -22,7 +22,8 @@ use App\Http\Controllers\TanggapanController
 
 
 Route::get('/www.ngadu!.com', function() {
-	return view('index');
+	$jumlah_pengaduan =	App\Models\Pengaduan::all()->count();
+	return view('index',compact('jumlah_pengaduan'));
 })->name('index');
 
 Route::get('/login', function() {
@@ -53,6 +54,7 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 	// Masyarakat CRUD
 	Route::group(['prefix'=>'masyarakat'], function() {
 		Route::get('/data',[MasyarakatController::class,'index'])->name('data.masyarakat');
+		Route::get('/laporan_data',[MasyarakatController::class,'data'])->name('laporan.masyarakat');
 		Route::get('/tambah',[MasyarakatController::class,'create'])->name('create.masyarakat');
 		Route::post('/add',[MasyarakatController::class,'store'])->name('store.masyarakat');
 		Route::get('/edit/{id}',[MasyarakatController::class,'edit'])->name('edit.masyarakat');
@@ -62,6 +64,7 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 	// Pengaduan
 	Route::group(['prefix' => 'pengaduan', 'middleware'=>['auth']], function() {
 		Route::get('/',[PengaduanController::class,'index'])->name('data.pengaduan');
+		Route::get('/laporan_data',[PengaduanController::class,'data'])->name('laporan.pengaduan');
 		Route::post('/ajax',[PengaduanController::class,'ajax'])->name('data.pengaduan.ajax');
 		Route::get('/entri',[PengaduanController::class,'entri'])->name('verifikasi');
 		Route::get('/show/{id}',[PengaduanController::class,'detail'])->name('show.pengaduan');
@@ -85,8 +88,7 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 // Masyarakat
 Route::group(['prefix'=>'user','middleware'=>['auth:masyarakat']], function() {
 	Route::get('/',[MasyarakatController::class,'dashboard'])->name('masyarakat.dashboard');
-	Route::get('/detail/{id}','masyarakatController@detail')->name('detail.pengaduan');
-	// Route::get('/tulis',[PengaduanController::class,'tulis'])->name('buat.pengaduan');
+	Route::get('/history/{id}',[MasyarakatController::class,'history'])->name('history.pengaduan');
 	Route::get('/proses',[PengaduanController::class,'proses'])->name('proses.pengaduan');
 	Route::get('/ditanggapi',[PengaduanController::class,'ditanggapi'])->name('tanggapi.pengaduan');
 	Route::get('/tolak',[PengaduanController::class,'tolak'])->name('tolak.pengaduan');
