@@ -25,13 +25,13 @@ class ReportController extends Controller
 
         public function laporan_pengaduan()
         {
-            $pengaduan = Pengaduan::all();
+            $pengaduan = Pengaduan::where('status','=','selesai')->orWhere('status','=','0')->get();
             return view('petugas.pengaduan.laporan',compact('pengaduan'));
         }
 
         public function pdf_pengaduan()
         {
-            $pengaduan = Pengaduan::all();
+            $pengaduan = Pengaduan::where('status','=','selesai')->orWhere('status','=','0')->get();
             $pdf = PDF::loadView('pdf.laporan_pengaduan',compact('pengaduan'));
             return $pdf->download('pengaduan-list.pdf');
         

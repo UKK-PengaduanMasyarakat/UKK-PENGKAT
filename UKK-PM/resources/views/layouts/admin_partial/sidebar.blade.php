@@ -44,9 +44,6 @@
 
                     <ul class="nav nav-group-sub" data-submenu-title="Widgets">
                         <li class="nav-item"><a href="{{route('data.masyarakat')}}" class="nav-link {{'petugas/masyarakat/data' === request()->path() ? 'active' : ''}}">Data Masyarakat</a></li>
-                        <li class="nav-item"><a href="index.html" class="nav-link {{'role-register' === request()->path() ? 'active' : ''}}">Tanggapan Masyarakat</a></li>
-                        <li class="nav-item"><a href="index.html" class="nav-link {{'role-register' === request()->path() ? 'active' : ''}}">Tanggapan Masyarakat</a></li>
-                        <li class="nav-item"><a href="index.html" class="nav-link {{'role-register' === request()->path() ? 'active' : ''}}"></a></li>
                     </ul>
                 </li>
                 @elseif( $petugas->level == 'petugas' )

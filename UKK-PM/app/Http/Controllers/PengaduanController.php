@@ -161,14 +161,14 @@ public function getEntri($id)
                     'created_at' => Carbon::now(),
                     ]);
 
-                    // return redirect()->back()->with('pesan','Berhasil Mengirim tanggapan');
+                    return redirect()->back()->with('pesan','Berhasil Mengirim tanggapan');
 
-                    return response()->json(
-                       [
-                           'success' => true,
-                           'message' => 'Data inserted successfully'
-                       ],200
-                   );
+                //     return response()->json(
+                //        [
+                //            'success' => true,
+                //            'message' => 'Data inserted successfully'
+                //        ],200
+                //    );
 
     }
 
