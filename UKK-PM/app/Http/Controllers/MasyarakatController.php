@@ -66,12 +66,7 @@ class MasyarakatController extends Controller
         
     }
 
-    public function data()
-    {   
-        $masyarakat = Masyarakat::paginate(10);
-        return view('petugas.masyarakat.laporan',compact('masyarakat'));
-        
-    }
+   
 
     public function edit($id)
     {

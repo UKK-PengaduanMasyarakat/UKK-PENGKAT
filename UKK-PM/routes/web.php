@@ -5,7 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\PengaduanController;
-use App\Http\Controllers\TanggapanController
+use App\Http\Controllers\TanggapanController;
+use App\Http\Controllers\ReportController;
 ;
 
 /*
@@ -54,7 +55,6 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 	// Masyarakat CRUD
 	Route::group(['prefix'=>'masyarakat'], function() {
 		Route::get('/data',[MasyarakatController::class,'index'])->name('data.masyarakat');
-		Route::get('/laporan_data',[MasyarakatController::class,'data'])->name('laporan.masyarakat');
 		Route::get('/tambah',[MasyarakatController::class,'create'])->name('create.masyarakat');
 		Route::post('/add',[MasyarakatController::class,'store'])->name('store.masyarakat');
 		Route::get('/edit/{id}',[MasyarakatController::class,'edit'])->name('edit.masyarakat');
@@ -64,7 +64,6 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 	// Pengaduan
 	Route::group(['prefix' => 'pengaduan', 'middleware'=>['auth']], function() {
 		Route::get('/',[PengaduanController::class,'index'])->name('data.pengaduan');
-		Route::get('/laporan_data',[PengaduanController::class,'data'])->name('laporan.pengaduan');
 		Route::post('/ajax',[PengaduanController::class,'ajax'])->name('data.pengaduan.ajax');
 		Route::get('/entri',[PengaduanController::class,'entri'])->name('verifikasi');
 		Route::get('/show/{id}',[PengaduanController::class,'detail'])->name('show.pengaduan');
@@ -76,6 +75,10 @@ Route::group(['prefix'=>'petugas','middleware'=>['auth:petugas']], function() {
 	});
 
 	Route::group(['prefix' => 'report','middleware'=>['auth']], function() {
+		Route::get('/laporan_masyarakat',[ReportController::class,'laporan_masyarakat'])->name('laporan.masyarakat');
+		Route::get('/laporan_pengaduan',[ReportController::class,'laporan_pengaduan'])->name('laporan.pengaduan');
+		Route::get('/pdf_masyarakat',[ReportController::class,'pdf_masyarakat'])->name('pdf.masyarakat');
+		Route::get('/pdf_pengaduan',[ReportController::class,'pdf_pengaduan'])->name('pdf.pengaduan');
 		Route::get('/pdf','reportController@pengaduan')->name('pengaduan.pdf');
 	});
 

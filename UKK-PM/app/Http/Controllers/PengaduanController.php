@@ -60,20 +60,6 @@ public function index()
 
 }
 
-public function data()
-{
-
-    $pengaduan = Pengaduan::with('Mahasiswa');
-    // dd($pengaduan);
-
-    return view('petugas.pengaduan.laporan');
-
-
-
-   
-
-
-}
 
 public function ajax(Request $request)
 {

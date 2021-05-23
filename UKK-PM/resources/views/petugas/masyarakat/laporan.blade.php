@@ -25,9 +25,45 @@
         </div>
     </div>
     <br>
-    <div class="container">
         <div class="row justify-content-center">
-          
-        </div>
+               
+
+
+
+
+                <div class="table-responsive col-10">
+                    <a href="{{route('pdf.masyarakat')}}" class="btn btn-danger">Export PDF</a>
+
+                    <div class="card-header header-elements-inline">
+                        <h4 class="card-title">Data Masyarakat</h4>
+
+                    </div>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="text-center">
+                                <th>NO</th>
+                                <th>Nik</th>
+                                <th>Nama</th>
+                                <th>Telp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($masyarakat as $mass)
+                                <tr>
+                                <td><b>{{ $loop->iteration }}</b></td>
+                                <td><b>{{ $mass->nik }}</b></td>
+                                <td><b>{{ $mass->nama }}</b></td>
+                                <td><b>{{ $mass->telp }}</b></td>
+                               
+                                </tr>
+
+
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                    {{-- {{ $masyarakat->links() }} --}}
+                </div>
     </div>
 @endsection

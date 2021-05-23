@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 @if ($petugas->level == 'admin')
-                <li class="nav-item nav-item-submenu  {{'petugas/dashboard' === request()->path()  ||  'petugas/admin/data' === request()->path()  ? '' : 'nav-item-expanded nav-item-open'}} ">
+                <li class="nav-item nav-item-submenu  {{'petugas/report/laporan_masyarakat' === request()->path()  ||'petugas/report/laporan_pengaduan' === request()->path()  || 'petugas/dashboard' === request()->path()  ||  'petugas/admin/data' === request()->path()  ? '' : 'nav-item-expanded nav-item-open'}} ">
                     <a href="#" class="nav-link {{'petugas/masyarakat/data' === request()->path() ? 'active ' : ''}}"><i class="icon-users4"></i> <span> Masyarakat</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Widgets">
@@ -51,7 +51,7 @@
                 </li>
                 @elseif( $petugas->level == 'petugas' )
                 <li class="nav-item">
-                    <a href="{{route('data.pengaduan')}}" class="nav-link {{'petugas/pengaduan' === request()->path() || 'petugas/pengaduan' === request()->path() || 'petugas/pengaduan/show/{*}' === request()->path()  ? 'active' : ''}}">
+                    <a href="{{route('data.pengaduan')}}" class="nav-link {{ 'petugas/pengaduan' === request()->path() || 'petugas/pengaduan/show/{*}' === request()->path()  ? 'active' : ''}}">
                         <i class="icon-inbox"></i>
                         <span>
                             Pengaduan Verifikasi
@@ -66,7 +66,7 @@
               {{-- petugas --}}
              
               @if ($petugas->level == 'admin')
-              <li class="nav-item nav-item-submenu  {{'petugas/dashboard' === request()->path() || 'petugas/masyarakat/data' === request()->path() ?  '' : 'nav-item-expanded nav-item-open'}} ">
+              <li class="nav-item nav-item-submenu  {{'petugas/report/laporan_masyarakat' === request()->path()  ||'petugas/report/laporan_pengaduan' === request()->path()  ||'petugas/dashboard' === request()->path() || 'petugas/masyarakat/data' === request()->path() ?  '' : 'nav-item-expanded nav-item-open'}} ">
                 <a href="#" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active ' : ''}}"><i class="icon-user-tie"></i> <span> Petugas</span></a>
 
                   <ul class="nav nav-group-sub" data-submenu-title="Widgets">
@@ -77,12 +77,12 @@
 
 
 
-            <li class="nav-item nav-item-submenu  {{'petugas/pengaduan' === request()->path() ||'petugas/dashboard' === request()->path() || 'petugas/masyarakat/data' === request()->path() ?  '' : 'nav-item-expanded nav-item-open'}} ">
-                <a href="#" class="nav-link {{'petugas/admin/data' === request()->path() ? 'active ' : ''}}"><i class="icon-file-text3"></i> <span> Laporan</span></a>
+            <li class="nav-item nav-item-submenu  {{'petugas/pengaduan' === request()->path() || 'petugas/pengaduan/show/{*}' === request()->path() || 'petugas/pennav-item-expanded nav-item-opengaduan' === request()->path() ||'petugas/dashboard' === request()->path() || 'petugas/masyarakat/data' === request()->path() || 'petugas/admin/data' === request()->path()   ?  '' : 'nav-item-expanded nav-item-open'}} ">
+                <a href="#" class="nav-link {{'petugas/report/laporan_masyarakat' === request()->path()  ||'petugas/report/laporan_pengaduan' === request()->path()  ? 'active ' : ''}}"><i class="icon-file-text3"></i> <span> Laporan</span></a>
 
                   <ul class="nav nav-group-sub" data-submenu-title="Widgets">
-                      <li class="nav-item"><a href="{{route('laporan.pengaduan')}}" class="nav-link {{'petugas/pengaduan/laporan_data' === request()->path() ? 'active' : ''}}">Laporan Pengaduan</a></li>
-                      <li class="nav-item"><a href="{{route('laporan.masyarakat')}}" class="nav-link {{'petugas/masyarakat/laporan_data' === request()->path() ? 'active' : ''}}">Laporan Masyarakat</a></li>
+                      <li class="nav-item"><a href="{{route('laporan.pengaduan')}}" class="nav-link {{'petugas/report/laporan_pengaduan' === request()->path() ? 'active' : ''}}">Laporan Pengaduan</a></li>
+                      <li class="nav-item"><a href="{{route('laporan.masyarakat')}}" class="nav-link {{'petugas/report/laporan_masyarakat' === request()->path() ? 'active' : ''}}">Laporan Masyarakat</a></li>
                   </ul>
               </li>
             
@@ -110,37 +110,7 @@
               
                 <!-- Forms -->
 
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Forms</div> <i class="icon-menu" title="Forms"></i></li>
-      
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-insert-template"></i> <span>Form layouts</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="Form layouts">
-                        <li class="nav-item"><a href="form_layout_vertical.html" class="nav-link">Vertical form</a></li>
-                        <li class="nav-item"><a href="form_layout_vertical_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
-                        <li class="nav-item-divider"></li>
-                        <li class="nav-item"><a href="form_layout_horizontal.html" class="nav-link">Horizontal form</a></li>
-                        <li class="nav-item"><a href="form_layout_horizontal_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
-                    </ul>
-                </li>
-                <!-- /forms -->
-
-                <!-- Components -->
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Components</div> <i class="icon-menu" title="Components"></i></li>
-              
-                <!-- /components -->
-
-                <!-- Layout -->
-           
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-atom2"></i> <span>Widgets</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="Widgets">
-                        <li class="nav-item"><a href="widgets_content.html" class="nav-link">Content widgets</a></li>
-                        <li class="nav-item"><a href="widgets_stats.html" class="nav-link">Statistics widgets</a></li>
-                        <li class="nav-item"><a href="widgets_menu.html" class="nav-link disabled">Menu widgets <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
-                        <li class="nav-item"><a href="widgets_form.html" class="nav-link disabled">Form widgets <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
-                    </ul>
-                </li>
-                <!-- /page kits -->
+               
 
             </ul>
         </div>

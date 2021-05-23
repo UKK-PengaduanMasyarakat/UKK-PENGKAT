@@ -19,7 +19,7 @@
                           <h5 class="card-title text-dark">{{$detail->Pengaduan->judul_laporan}} </h5>
                         </div>
                         <div class="col-4 ms-5">
-                            <a href="{{route('proses.pengaduan')}}" class="btn btn-dark ms-5 " > <i class="icon-exit text-white" style="transform: rotate(180deg);"> </i> Kembali</a>
+                            <a href="{{route('tanggapi.pengaduan')}}" class="btn btn-dark ms-5 " > <i class="icon-exit text-white" style="transform: rotate(180deg);"> </i> Kembali</a>
                         </div>
                     </div>
 
