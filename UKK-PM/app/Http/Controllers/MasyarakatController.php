@@ -49,7 +49,7 @@ class MasyarakatController extends Controller
     public function history($id)
     {   
         // dd($id);
-        $history  = Pengaduan::where('id_masyarakat','=',$id)->orWhere('status','selesai')->orWhere('status','0')->orderBy('created_at','DESC')->paginate(3);
+        $history  = Pengaduan::where('id_masyarakat',$id)->Where('status','selesai')->orderBy('created_at','ASC')->paginate(3);
         // dd($history);
 
             return view('masyarakat.history_pengaduan',compact('history'));
