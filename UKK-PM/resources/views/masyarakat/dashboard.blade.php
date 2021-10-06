@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         @endif
-                        <form action="{{ route('post.pengaduan') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('post.pengaduan') }}" method="POST" enctype="multipart/form-data" >
                             @csrf
                             <div class="form-group-row">
                                 <br>
